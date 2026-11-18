@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ============================================================
+         PRODUCTION DOMAIN: https://billmaker.pixara.in
+         If the domain changes, update the canonical link, the hreflang
+         links, Open Graph, the Twitter card and the JSON-LD block below,
+         plus robots.txt, sitemap.xml and bill.html.
+         ============================================================ -->
+
+    <!-- ===== Primary SEO ===== -->
+    <title>Receipt Maker &amp; Bill Maker – Free Online Invoice Generator</title>
+    <meta name="description" content="Create cash receipts, rent bills and GST/VAT tax invoices online for free. Auto currency, PDF &amp; PNG download, WhatsApp sharing. No login or sign-up.">
+    <meta name="keywords" content="receipt maker, bill maker, receipt generator, bill generator, invoice maker, invoice generator, free receipt maker, free bill maker, online receipt maker, cash receipt, rent receipt, payment receipt, tax invoice generator, GST invoice, VAT invoice, sales receipt, service invoice, receipt maker no login, PDF invoice, WhatsApp invoice">
+    <meta name="author" content="QuickBill">
+    <meta name="application-name" content="QuickBill – Receipt Maker and Bill Maker">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#4f46e5">
+    <meta name="color-scheme" content="light">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="QuickBill">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <link rel="canonical" href="https://billmaker.pixara.in/">
+    <link rel="alternate" hreflang="en" href="https://billmaker.pixara.in/">
+    <link rel="alternate" hreflang="x-default" href="https://billmaker.pixara.in/">
+
+    <!-- ===== Open Graph ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="QuickBill">
+    <meta property="og:title" content="Receipt Maker &amp; Bill Maker – Free Online Invoice Generator">
+    <meta property="og:description" content="Create receipts, bills and tax invoices free in your own currency. No login. Download PDF, save PNG or send on WhatsApp.">
+    <meta property="og:url" content="https://billmaker.pixara.in/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://billmaker.pixara.in/og-image.png">
+    <meta property="og:image:secure_url" content="https://billmaker.pixara.in/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1376">
+    <meta property="og:image:height" content="768">
+    <meta property="og:image:alt" content="QuickBill receipt maker and bill maker – create invoices online for free">
+
+    <!-- ===== Twitter / X Card ===== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Receipt Maker &amp; Bill Maker – Free Online Invoice Generator">
+    <meta name="twitter:description" content="Create receipts, bills and tax invoices free in your own currency. No login required.">
+    <meta name="twitter:image" content="https://billmaker.pixara.in/og-image.png">
+    <meta name="twitter:image:alt" content="QuickBill receipt maker and bill maker – create invoices online for free">
+
+    <!-- ===== Icons and manifest ===== -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- ===== Performance hints ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://ipapi.co">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hidden { display: none !important; }
+        .icon-tile { background: #ffffff; border-radius: 12px; padding: 5px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .icon-tile svg { width: 100%; height: 100%; display: block; }
+        .fld { width: 100%; padding: 0.5rem 0.875rem; border-radius: 0.5rem; border: 1px solid #cbd5e1; font-size: 0.875rem; outline: none; background: #fff; }
+        .fld:focus { box-shadow: 0 0 0 2px #6366f1; border-color: #6366f1; }
+        .lbl { display: block; font-size: 0.75rem; font-weight: 500; color: #475569; margin-bottom: 0.25rem; }
+
+        .type-card { position: relative; text-align: left; padding: 14px; border-radius: 16px; border: 2px solid #e2e8f0; background: #fff; transition: all .15s; cursor: pointer; width: 100%; }
+        .type-card:hover { border-color: #a5b4fc; }
+        .type-card[aria-checked="true"] { border-color: #4f46e5; background: #eef2ff; box-shadow: 0 0 0 3px #c7d2fe; }
+        .type-card .tick { display: none; position: absolute; top: 10px; right: 10px; width: 22px; height: 22px; border-radius: 9999px; background: #4f46e5; color: #fff; font-size: 13px; align-items: center; justify-content: center; font-weight: 700; }
+        .type-card[aria-checked="true"] .tick { display: inline-flex; }
+        .type-card .ic { width: 38px; height: 38px; color: #64748b; display: block; }
+        .type-card[aria-checked="true"] .ic { color: #4f46e5; }
+
+        .seg-btn { flex: 1; padding: 10px 12px; border-radius: 12px; font-weight: 600; font-size: 14px; background: #fff; color: #475569; border: 2px solid #e2e8f0; transition: all .15s; cursor: pointer; }
+        .seg-btn[aria-pressed="true"] { background: #4f46e5; color: #fff; border-color: #4f46e5; }
+        details > summary { cursor: pointer; }
+
+        /* ===== Bill / Receipt tab switcher ===== */
+        .tab-btn { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; width: 100%; padding: 10px 14px; border-radius: 14px; background: #ffffff; border: 2px solid #e2e8f0; color: #475569; transition: all .15s; cursor: pointer; }
+        .tab-btn:hover { border-color: #a5b4fc; }
+        .tab-btn[aria-selected="true"] { background: #4f46e5; border-color: #4f46e5; color: #ffffff; box-shadow: 0 6px 16px rgba(79, 70, 229, .25); }
+        .tab-btn .tab-title { font-weight: 700; font-size: 15px; line-height: 1.2; }
+        .tab-btn .tab-sub { font-size: 11px; line-height: 1.3; color: #64748b; }
+        .tab-btn[aria-selected="true"] .tab-sub { color: #e0e7ff; }
+        .tab-btn:focus-visible { outline: 3px solid #a5b4fc; outline-offset: 2px; }
+        .tabpanel { scroll-margin-top: 96px; }
+        .tabpanel[hidden] { display: none !important; }
+        #how-to, #faq, #bill-maker, #receipt-maker { scroll-margin-top: 90px; }
+
+        .skip-link { position: absolute; left: -9999px; top: 0; z-index: 100; background: #4f46e5; color: #ffffff; padding: 10px 16px; border-radius: 0 0 8px 0; font-weight: 600; }
+        .skip-link:focus { left: 0; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .tab-btn, .type-card, .seg-btn { transition: none; }
+        }
+    </style>
+
+    <!-- ===== Structured data (JSON-LD) ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://billmaker.pixara.in/#website",
+          "url": "https://billmaker.pixara.in/",
+          "name": "QuickBill – Receipt Maker and Bill Maker",
+          "alternateName": ["QuickReceipt", "Receipt Maker", "Bill Maker"],
+          "description": "Free online receipt maker and bill maker with automatic local currency, PDF and PNG downloads.",
+          "inLanguage": "en"
+        },
+        {
+          "@type": "WebApplication",
+          "@id": "https://billmaker.pixara.in/#app",
+          "name": "QuickBill – Receipt Maker and Bill Maker",
+          "url": "https://billmaker.pixara.in/",
+          "description": "Create receipts, bills and tax invoices online for free. Automatic local currency, PDF and PNG download, WhatsApp sharing. No login required.",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Any (web browser)",
+          "browserRequirements": "Requires JavaScript",
+          "inLanguage": "en",
+          "isAccessibleForFree": true,
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+          "featureList": [
+            "Free bill maker with line items, discount and optional GST, VAT or sales tax",
+            "Free quick cash receipt maker for rent, fees and single payments",
+            "Automatic local currency and phone country code",
+            "Business logo: auto-generated initials or upload your own",
+            "Download as PDF or PNG",
+            "Share on WhatsApp",
+            "No login or sign-up; nothing uploaded to a server"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://billmaker.pixara.in/#breadcrumb",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://billmaker.pixara.in/" },
+            { "@type": "ListItem", "position": 2, "name": "Receipt Maker and Bill Maker", "item": "https://billmaker.pixara.in/" }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://billmaker.pixara.in/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I make a receipt or bill online for free?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Choose the Bill tab for an itemised invoice or the Quick Receipt tab for a simple payment slip, fill in your business and customer details, then preview the result and download it as a PDF or PNG, or share it on WhatsApp. No account is needed." }
+            },
+            {
+              "@type": "Question",
+              "name": "Which tab should I use: Bill or Quick Receipt?",
+              "acceptedAnswer": { "@type": "Answer", "text": "The Bill tab creates an itemised bill or tax invoice with quantity, rate, discount, tax and payment details. The Quick Receipt tab creates a one-page cash receipt for rent, tuition fees, freelance work or any single payment." }
+            },
+            {
+              "@type": "Question",
+              "name": "Do I need an account or login?",
+              "acceptedAnswer": { "@type": "Answer", "text": "No. There is no sign-up and no login. Everything is created in your browser and nothing you type is uploaded to a server." }
+            },
+            {
+              "@type": "Question",
+              "name": "Does it use my local currency?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. The bill maker detects your approximate region and picks the matching currency and phone country code. You can change the currency at any time, and the quick receipt also lets you pick a currency symbol." }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I add GST, VAT or sales tax?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. Switch on tax in the Bill tab, set the tax name and rate, and the tool adds it to the total. Indian users can also split GST into CGST and SGST." }
+            },
+            {
+              "@type": "Question",
+              "name": "Is my data stored on a server?",
+              "acceptedAnswer": { "@type": "Answer", "text": "No. Your business details and uploaded logo are saved only in your own browser so you do not have to retype them. Your IP address is looked up once to suggest a currency and phone code, and nothing you type in a form is sent anywhere." }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I send the bill or receipt on WhatsApp?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. On supported phones the share button attaches the bill or receipt image directly. Otherwise the image is downloaded so you can attach it manually in WhatsApp." }
+            },
+            {
+              "@type": "Question",
+              "name": "Does the receipt maker work on a phone?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. Both the bill maker and the quick receipt maker are designed for phones first, with large buttons, plain wording and portrait PDF or PNG output that is easy to send and print." }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <noscript>
+        <div style="padding:16px;background:#fef3c7;color:#92400e;text-align:center;font-size:14px;">
+            This free receipt maker and bill maker needs JavaScript. Please enable JavaScript in your browser to create receipts and bills.
+        </div>
+    </noscript>
+    <!-- SVG ICON LIBRARY -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <symbol id="icon-pdf" viewBox="0 0 48 48">
+                <path d="M10 3h20l11 11v30a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" fill="#ffffff" stroke="#dc2626" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M30 3v11h11" fill="#fee2e2" stroke="#dc2626" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M15 20h14M15 26h10" stroke="#fca5a5" stroke-width="2.5" stroke-linecap="round"/>
+                <rect x="3" y="30" width="34" height="15" rx="3.5" fill="#dc2626"/>
+                <text x="20" y="41.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="11.5" font-weight="800" fill="#ffffff">PDF</text>
+            </symbol>
+            <symbol id="icon-png" viewBox="0 0 48 48">
+                <path d="M10 3h20l11 11v30a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" fill="#ffffff" stroke="#2563eb" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M30 3v11h11" fill="#dbeafe" stroke="#2563eb" stroke-width="2.5" stroke-linejoin="round"/>
+                <circle cx="19" cy="19" r="3" fill="#f59e0b"/>
+                <path d="M12 29l8-8 5 5 3-3 8 6z" fill="#60a5fa"/>
+                <rect x="3" y="30" width="34" height="15" rx="3.5" fill="#2563eb"/>
+                <text x="20" y="41.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="11.5" font-weight="800" fill="#ffffff">PNG</text>
+            </symbol>
+            <symbol id="icon-wa" viewBox="0 0 24 24">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" fill="#25D366" stroke="#25D366" stroke-width="1.2" stroke-linejoin="round"/>
+                <g transform="translate(6.6 6.4) scale(0.46)">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="#ffffff"/>
+                </g>
+            </symbol>
+            <symbol id="icon-box" viewBox="0 0 24 24">
+                <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/>
+                </g>
+            </symbol>
+            <symbol id="icon-tool" viewBox="0 0 24 24">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <a class="skip-link" href="#panel-bill">Skip to the receipt and bill form</a>
+
+    <!-- ===== Header ===== -->
+    <header class="bg-white border-b border-slate-200 shadow-sm">
+        <div class="max-w-3xl mx-auto px-4 py-4 flex justify-between items-center gap-3">
+            <a href="./" class="text-xl font-bold text-indigo-600 flex items-center gap-2" aria-label="QuickBill home">
+                🧾 QuickBill
+            </a>
+            <div class="flex items-center gap-3">
+                <nav aria-label="Page sections" class="hidden sm:flex items-center gap-4 text-sm text-slate-600">
+                    <a href="#how-to" class="hover:text-indigo-700">How it works</a>
+                    <a href="#faq" class="hover:text-indigo-700">FAQ</a>
+                </nav>
+                <span class="text-xs bg-indigo-50 text-indigo-700 font-medium px-2.5 py-1 rounded-full whitespace-nowrap">Free · No Login</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-2xl mx-auto px-4 py-8 w-full flex-grow">
+
+        <div class="text-center mb-6">
+            <h1 class="text-2xl md:text-3xl font-bold text-slate-900">Receipt Maker and Bill Maker</h1>
+            <p class="text-sm text-slate-500 mt-2">Create an itemised bill or tax invoice, or a quick cash receipt, in your own currency. Free, with no sign-up.</p>
+        </div>
+
+        <!-- ===== Tab switcher: Bill (default) / Quick Receipt ===== -->
+        <div class="sticky top-0 z-30 -mx-4 px-4 py-3 mb-6 bg-slate-50/95 backdrop-blur border-b border-slate-200/70">
+            <div role="tablist" aria-label="Choose what you want to create" class="grid grid-cols-2 gap-2 max-w-md mx-auto">
+                <button type="button" id="tab-bill" role="tab" aria-selected="true" aria-controls="panel-bill" data-tab="bill" tabindex="0" class="tab-btn">
+                    <span class="tab-title">Bill / Invoice</span>
+                    <span class="tab-sub">Goods &amp; services, tax, items</span>
+                </button>
+                <button type="button" id="tab-receipt" role="tab" aria-selected="false" aria-controls="panel-receipt" data-tab="receipt" tabindex="-1" class="tab-btn">
+                    <span class="tab-title">Quick Receipt</span>
+                    <span class="tab-sub">Cash, rent, fees — one page</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- ===== TAB PANEL: BILL (default) ===== -->
+        <section id="panel-bill" class="tabpanel bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8" role="tabpanel" aria-labelledby="tab-bill">
+            <div class="mb-6 text-center">
+                <h2 class="text-xl md:text-2xl font-bold text-slate-900">Bill &amp; Tax Invoice Maker</h2>
+                <p class="text-sm text-slate-500 mt-1">Add your items, optional GST/VAT, and payment details, then download or share the bill.</p>
+            </div>
+
+            <form id="billForm" class="space-y-5">
+
+                <!-- STEP 1 -->
+                <div role="radiogroup" aria-labelledby="typeLabel">
+                    <p id="typeLabel" class="text-sm font-semibold text-slate-800 mb-2">1. What are you billing for?</p>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button type="button" id="typeGoodsBtn" role="radio" aria-checked="true" class="type-card" data-type="goods">
+                            <span class="tick">✓</span>
+                            <svg class="ic" aria-hidden="true"><use href="#icon-box"/></svg>
+                            <span class="block font-bold text-slate-900 mt-2">Goods</span>
+                            <span class="block text-xs text-slate-500 mt-0.5">Invoice for Goods Sold</span>
+                            <span class="block text-[11px] text-slate-400 mt-1">eg. Groceries, Stationaries, Any other Items</span>
+                        </button>
+                        <button type="button" id="typeServiceBtn" role="radio" aria-checked="false" class="type-card" data-type="service">
+                            <span class="tick">✓</span>
+                            <svg class="ic" aria-hidden="true"><use href="#icon-tool"/></svg>
+                            <span class="block font-bold text-slate-900 mt-2">Service</span>
+                            <span class="block text-xs text-slate-500 mt-0.5">Invoice for Services provided</span>
+                            <span class="block text-[11px] text-slate-400 mt-1">eg. Repair, Tuitions, Any other Services</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div>
+                    <p class="text-sm font-semibold text-slate-800 mb-2">2. Do you want to add tax (GST / VAT / Sales tax)?</p>
+                    <div class="flex gap-3">
+                        <button type="button" id="taxNoBtn" class="seg-btn" aria-pressed="true" data-tax="off">No tax</button>
+                        <button type="button" id="taxYesBtn" class="seg-btn" aria-pressed="false" data-tax="on">Yes, add tax</button>
+                    </div>
+                </div>
+
+                <p class="text-sm font-semibold text-slate-800 pt-1">3. Fill in the details</p>
+
+                <!-- Business -->
+                <div class="border border-slate-200 rounded-xl overflow-hidden">
+                    <button type="button" data-acc="secBusiness" class="w-full px-5 py-3.5 bg-slate-50 hover:bg-slate-100 font-semibold text-slate-800 text-left flex justify-between items-center transition">
+                        <span>🏢 Enter Business Details</span><span id="secBusinessIcon" class="text-slate-400">▼</span>
+                    </button>
+                    <div id="secBusiness" class="hidden p-5 space-y-4 bg-white border-t border-slate-100">
+                        <div>
+                            <label class="lbl" for="bizName">Business / Company Name</label>
+                            <input type="text" id="bizName" placeholder="e.g., Your Company Name" class="fld" autocomplete="organization">
+                        </div>
+                        <!-- Logo -->
+                        <div id="logoBlock">
+                            <p class="lbl">Logo on the bill</p>
+                            <div class="flex gap-2" role="group" aria-label="Logo on the bill">
+                                <button type="button" id="logoNoneBtn" class="seg-btn" aria-pressed="true" style="font-size:13px;padding:10px 4px;">No logo</button>
+                                <button type="button" id="logoAutoBtn" class="seg-btn" aria-pressed="false" style="font-size:13px;padding:10px 4px;">Auto-generate</button>
+                                <button type="button" id="logoUploadBtn" class="seg-btn" aria-pressed="false" style="font-size:13px;padding:10px 4px;">Upload logo</button>
+                            </div>
+
+                            <div id="logoAutoBlock" class="hidden mt-2" style="margin-top:8px;">
+                                <div style="display:flex;align-items:center;gap:12px;">
+                                    <div id="logoAutoPreview" style="min-width:40px;min-height:40px;"></div>
+                                    <p id="logoAutoHint" class="text-xs text-slate-500"></p>
+                                </div>
+                            </div>
+
+                            <div id="logoUploadBlock" class="hidden mt-2" style="margin-top:8px;">
+                                <label class="lbl" for="logoFile">Choose your logo (PNG, JPG or WebP)</label>
+                                <input type="file" id="logoFile" accept="image/png,image/jpeg,image/webp" class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 file:text-indigo-700">
+                                <div id="logoThumbRow" class="hidden" style="align-items:center;gap:12px;margin-top:8px;">
+                                    <img id="logoThumb" alt="Your logo" style="max-height:48px;max-width:140px;border:1px solid #e2e8f0;border-radius:6px;padding:2px;background:#fff;">
+                                    <button type="button" id="logoRemoveBtn" class="text-xs font-semibold text-red-600 hover:text-red-700">Remove</button>
+                                </div>
+                                <p id="logoMsg" class="text-xs" style="margin-top:6px;"></p>
+                                <p class="text-xs text-slate-400" style="margin-top:4px;">Your logo is resized automatically and stays on this device. It is never uploaded.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div><label class="lbl" for="bizPhone">Phone Number</label><input type="tel" id="bizPhone" placeholder="Phone number" class="fld" autocomplete="tel"></div>
+                            <div><label class="lbl" for="bizEmail">Email (Optional)</label><input type="email" id="bizEmail" placeholder="email@gmail.com" class="fld" autocomplete="email"></div>
+                        </div>
+                        <div id="taxBizField" class="hidden">
+                            <label class="lbl" for="bizTaxId">Your <span class="taxIdLabel">Tax ID</span></label>
+                            <input type="text" id="bizTaxId" placeholder="Tax registration number" maxlength="30" class="fld uppercase">
+                        </div>
+                        <div>
+                            <label class="lbl" for="bizAddress">Business Address</label>
+                            <textarea id="bizAddress" rows="2" placeholder="Street, City, State/Region, Postal code" class="fld"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer -->
+                <div class="border border-slate-200 rounded-xl overflow-hidden">
+                    <button type="button" data-acc="secCustomer" class="w-full px-5 py-3.5 bg-slate-50 hover:bg-slate-100 font-semibold text-slate-800 text-left flex justify-between items-center transition">
+                        <span>👤 Bill To (Customer Details)</span><span id="secCustomerIcon" class="text-slate-400">▼</span>
+                    </button>
+                    <div id="secCustomer" class="hidden p-5 space-y-4 bg-white border-t border-slate-100">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div><label class="lbl" for="custName">Customer Name</label><input type="text" id="custName" placeholder="Customer Name" class="fld"></div>
+                            <div><label class="lbl" for="billNo">Invoice No. (Optional)</label><input type="text" id="billNo" value="INV-2026-0001" class="fld"></div>
+                        </div>
+                        <div>
+                            <label class="lbl" for="custAddress">Customer Address (Optional)</label>
+                            <textarea id="custAddress" rows="2" placeholder="Street, City, State/Region, Postal code" class="fld"></textarea>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div><label class="lbl" for="custPhone">Customer Phone (Optional)</label><input type="tel" id="custPhone" placeholder="Phone number" class="fld"></div>
+                            <div><label class="lbl" for="custEmail">Customer Email (Optional)</label><input type="email" id="custEmail" placeholder="client@example.com" class="fld"></div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div><label class="lbl" for="billDate">Invoice Date</label><input type="date" id="billDate" class="fld"></div>
+                            <div><label class="lbl" for="dueDate">Due Date</label><input type="date" id="dueDate" class="fld"></div>
+                        </div>
+                        <div id="taxCustField" class="hidden">
+                            <label class="lbl" for="custTaxId">Customer <span class="taxIdLabel">Tax ID</span> (optional)</label>
+                            <input type="text" id="custTaxId" placeholder="Customer tax number" maxlength="30" class="fld uppercase">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Items -->
+                <div class="border border-slate-200 rounded-xl overflow-hidden">
+                    <button type="button" data-acc="secItems" class="w-full px-5 py-3.5 bg-slate-50 hover:bg-slate-100 font-semibold text-slate-800 text-left flex justify-between items-center transition">
+                        <span>📦 Items &amp; Charges</span><span id="secItemsIcon" class="text-slate-400">▼</span>
+                    </button>
+                    <div id="secItems" class="hidden p-5 space-y-4 bg-white border-t border-slate-100">
+                        <div>
+                            <label class="lbl" for="currencySelect">Currency <span id="currencyAuto" class="text-slate-400 font-normal"></span></label>
+                            <select id="currencySelect" class="fld"></select>
+                        </div>
+
+                        <div id="itemsContainer" class="space-y-3"></div>
+                        <button type="button" id="addItemBtn" class="w-full py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-semibold rounded-lg text-xs transition">+ Add Another Item</button>
+
+                        <div class="pt-2 border-t border-slate-100">
+                            <label class="lbl" for="discount">Discount (<span class="curSym">$</span>, optional)</label>
+                            <input type="number" id="discount" inputmode="decimal" min="0" step="any" placeholder="0.00" class="fld">
+                        </div>
+
+                        <div id="taxBlock" class="hidden pt-2 border-t border-slate-100 space-y-3">
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="lbl" for="taxName">Tax name</label>
+                                    <input type="text" id="taxName" placeholder="GST / VAT / Sales Tax" maxlength="20" class="fld">
+                                </div>
+                                <div>
+                                    <label class="lbl" for="taxRate">Tax rate (%)</label>
+                                    <input type="number" id="taxRate" list="rateList" inputmode="decimal" min="0" max="100" step="any" placeholder="e.g. 18" class="fld">
+                                    <datalist id="rateList"><option value="5"><option value="7.5"><option value="10"><option value="12"><option value="15"><option value="18"><option value="20"><option value="28"></datalist>
+                                </div>
+                            </div>
+                            <label id="splitRow" class="hidden items-center gap-2 text-xs text-slate-600" style="gap:8px;">
+                                <input type="checkbox" id="taxSplit" checked class="w-4 h-4 accent-indigo-600">
+                                Split into CGST + SGST (half each)
+                            </label>
+                        </div>
+
+                        <div id="liveTotals" class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs space-y-1" aria-live="polite"></div>
+                    </div>
+                </div>
+
+                <!-- Payment -->
+                <div class="border border-slate-200 rounded-xl overflow-hidden">
+                    <button type="button" data-acc="secPayment" class="w-full px-5 py-3.5 bg-slate-50 hover:bg-slate-100 font-semibold text-slate-800 text-left flex justify-between items-center transition">
+                        <span>💳 Payment Details &amp; Terms</span><span id="secPaymentIcon" class="text-slate-400">▼</span>
+                    </button>
+                    <div id="secPayment" class="hidden p-5 space-y-4 bg-white border-t border-slate-100">
+                        <div>
+                            <label class="lbl" for="payMode">Payment Mode</label>
+                            <select id="payMode" class="fld">
+                                <option>Cash</option><option>Bank Transfer</option><option>Card</option>
+                                <option>UPI</option><option>PayPal</option><option>Cheque</option><option>Split Payment</option>
+                            </select>
+                        </div>
+
+                        <!-- Bank Transfer only -->
+                        <div id="payBankBlock" class="hidden">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div><label class="lbl" for="payBank">Bank Name</label><input type="text" id="payBank" placeholder="Bank name" class="fld"></div>
+                                <div><label class="lbl" for="payAcName">Account Holder Name</label><input type="text" id="payAcName" placeholder="Account holder" class="fld"></div>
+                                <div><label class="lbl" for="payAcNo">Account Number / IBAN</label><input type="text" id="payAcNo" placeholder="Account number" class="fld"></div>
+                                <div><label class="lbl" for="payCode">Bank Code (IFSC / SWIFT / Sort code)</label><input type="text" id="payCode" placeholder="Bank code" class="fld uppercase"></div>
+                            </div>
+                        </div>
+
+                        <!-- Card / UPI / PayPal / Cheque: one reference field (label changes with the mode) -->
+                        <div id="payRefBlock" class="hidden">
+                            <label class="lbl" for="payRef"><span id="payRefLabel">Reference</span></label>
+                            <input type="text" id="payRef" maxlength="40" placeholder="" class="fld">
+                        </div>
+
+                        <!-- Split Payment -->
+                        <div id="splitBlock" class="hidden space-y-3">
+                            <p class="text-xs text-slate-600">Customer paid in more than one way? Add each payment below. The amounts should add up to the bill total.</p>
+                            <div id="splitRows" class="space-y-3"></div>
+                            <button type="button" id="addSplitBtn" class="w-full py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-semibold rounded-lg text-xs transition">+ Add another payment</button>
+                            <p id="splitStatus" class="text-xs font-semibold" aria-live="polite"></p>
+                        </div>
+
+                        <div>
+                            <label class="lbl" for="terms">Terms &amp; Notes (one per line)</label>
+                            <textarea id="terms" rows="4" class="fld">1. Goods sold can't be returned.
+2. Late payments may attract interest.
+3. This is a computer-generated invoice.</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" id="previewBtn" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3 px-6 rounded-xl transition flex items-center justify-center gap-2">
+                    👁️ Preview Bill
+                </button>
+
+                <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 text-center pt-2">Download or Send</p>
+                <div class="space-y-3">
+                    <button type="button" id="pdfBtn" class="w-full bg-red-600 hover:bg-red-700 active:scale-[0.99] text-white rounded-2xl shadow-md transition flex items-center gap-4 px-4 py-3 text-left">
+                        <span class="icon-tile w-14 h-14"><svg aria-hidden="true"><use href="#icon-pdf"/></svg></span>
+                        <span class="flex flex-col"><span class="text-base font-bold leading-tight">Download PDF</span><span class="text-xs text-red-100">A4 printable bill</span></span>
+                    </button>
+                    <button type="button" id="pngBtn" class="w-full bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white rounded-2xl shadow-md transition flex items-center gap-4 px-4 py-3 text-left">
+                        <span class="icon-tile w-14 h-14"><svg aria-hidden="true"><use href="#icon-png"/></svg></span>
+                        <span class="flex flex-col"><span class="text-base font-bold leading-tight">Save as Picture (PNG)</span><span class="text-xs text-blue-100">Saves to your phone gallery</span></span>
+                    </button>
+                    <button type="button" id="waBtn" class="w-full bg-[#25D366] hover:bg-[#1ebe5b] active:scale-[0.99] text-white rounded-2xl shadow-md transition flex items-center gap-4 px-4 py-3 text-left">
+                        <span class="icon-tile w-14 h-14"><svg aria-hidden="true"><use href="#icon-wa"/></svg></span>
+                        <span class="flex flex-col"><span class="text-base font-bold leading-tight">Send on WhatsApp</span><span class="text-xs text-green-50">Share with your customer</span></span>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- ===== TAB PANEL: QUICK RECEIPT ===== -->
+        <section id="panel-receipt" class="tabpanel bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8" role="tabpanel" aria-labelledby="tab-receipt" hidden>
+            <div class="mb-6 text-center">
+                <h2 class="text-xl md:text-2xl font-bold text-slate-900">Quick Cash Receipt</h2>
+                <p class="text-sm text-slate-500 mt-1">One payment, one page. Fill in the details and download or share the receipt in seconds.</p>
+            </div>
+
+            <form id="receiptForm" class="space-y-5" onsubmit="event.preventDefault();">
+                <!-- Issued By -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1" for="issuedBy">Issued By</label>
+                    <input type="text" id="issuedBy" placeholder="Your name or Your Shop Name" autocomplete="organization"
+                        class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+                    <p class="text-xs text-slate-400 mt-1">Saved automatically in this browser for next time.</p>
+                </div>
+
+                <!-- Bill To & Receipt No -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1" for="customerName">Bill To</label>
+                        <input type="text" id="customerName" placeholder="e.g., John Smith"
+                            class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+                        <p class="text-xs text-slate-400 mt-1">Name of client or customer</p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1" for="receiptNo">Receipt No.</label>
+                        <input type="text" id="receiptNo" value="#101"
+                            class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+                        <p class="text-xs text-slate-400 mt-1">Edit as needed for each receipt</p>
+                    </div>
+                </div>
+
+                <!-- Date & Amount -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1" for="receiptDate">Date</label>
+                        <input type="date" id="receiptDate"
+                            class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+                        <p class="text-xs text-slate-400 mt-1">Transaction date</p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1" for="amount">Amount Paid</label>
+                        <div class="flex">
+                            <select id="currencySymbol" aria-label="Receipt currency" class="bg-slate-100 border border-r-0 border-slate-300 rounded-l-lg px-3 py-2.5 text-sm font-semibold text-slate-700 outline-none">
+                                <option value="$">$ (USD)</option>
+                                <option value="₹">₹ (INR)</option>
+                                <option value="€">€ (EUR)</option>
+                                <option value="£">£ (GBP)</option>
+                                <option value="CA$">CA$ (CAD)</option>
+                                <option value="A$">A$ (AUD)</option>
+                            </select>
+                            <input type="number" id="amount" placeholder="150.00" step="0.01" min="0" inputmode="decimal"
+                                class="w-full px-4 py-2.5 rounded-r-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1">Enter total amount received</p>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1" for="description">Description / Particulars</label>
+                    <textarea id="description" rows="3" placeholder="1. House Rent&#10;2. Water Bill"
+                        class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition font-mono text-sm"></textarea>
+                    <p class="text-xs text-slate-400 mt-1">Press Enter to automatically add the next numbered line item.</p>
+                </div>
+
+                <!-- Payment Mode -->
+                <div>
+                    <p class="block text-sm font-medium text-slate-700 mb-2" id="paymentModeLabel">Payment Mode</p>
+                    <div id="paymentModeGroup" role="group" aria-labelledby="paymentModeLabel" class="flex flex-wrap gap-2">
+                        <button type="button" data-mode="Cash" aria-pressed="true" class="mode-btn px-4 py-2 rounded-lg border border-indigo-600 bg-indigo-50 text-indigo-700 font-medium text-sm transition">Cash</button>
+                        <button type="button" data-mode="UPI" aria-pressed="false" class="mode-btn px-4 py-2 rounded-lg border border-slate-300 bg-white text-slate-700 font-medium text-sm transition hover:border-slate-400">UPI</button>
+                        <button type="button" data-mode="Card" aria-pressed="false" class="mode-btn px-4 py-2 rounded-lg border border-slate-300 bg-white text-slate-700 font-medium text-sm transition hover:border-slate-400">Card</button>
+                        <button type="button" data-mode="Bank Transfer" aria-pressed="false" class="mode-btn px-4 py-2 rounded-lg border border-slate-300 bg-white text-slate-700 font-medium text-sm transition hover:border-slate-400">Bank Transfer</button>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="pt-4 flex flex-col gap-3">
+                    <button type="button" id="receiptPreviewBtn" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3 px-6 rounded-xl transition flex items-center justify-center gap-2">
+                        👁️ Preview Receipt
+                    </button>
+
+                    <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 text-center pt-2">Save or send your receipt</p>
+
+                    <button type="button" id="receiptPdfBtn" class="w-full bg-red-600 hover:bg-red-700 active:scale-[0.99] text-white rounded-2xl shadow-md transition flex items-center gap-4 px-4 py-3 text-left">
+                        <span class="icon-tile w-14 h-14"><svg aria-hidden="true"><use href="#icon-pdf"/></svg></span>
+                        <span class="flex flex-col">
+                            <span class="text-base font-bold leading-tight">Download PDF</span>
+                            <span class="text-xs text-red-100">Best for printing</span>
+                        </span>
+                    </button>
+
+                    <button type="button" id="receiptPngBtn" class="w-full bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white rounded-2xl shadow-md transition flex items-center gap-4 px-4 py-3 text-left">
+                        <span class="icon-tile w-14 h-14"><svg aria-hidden="true"><use href="#icon-png"/></svg></span>
+                        <span class="flex flex-col">
+                            <span class="text-base font-bold leading-tight">Save as Picture (PNG)</span>
+                            <span class="text-xs text-blue-100">Saves to your phone gallery</span>
+                        </span>
+                    </button>
+
+                    <button type="button" id="receiptWaBtn" class="w-full bg-[#25D366] hover:bg-[#1ebe5b] active:scale-[0.99] text-white rounded-2xl shadow-md transition flex items-center gap-4 px-4 py-3 text-left">
+                        <span class="icon-tile w-14 h-14"><svg aria-hidden="true"><use href="#icon-wa"/></svg></span>
+                        <span class="flex flex-col">
+                            <span class="text-base font-bold leading-tight">Send on WhatsApp</span>
+                            <span class="text-xs text-green-50">Share receipt with your customer</span>
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- ===== SEO / HELP CONTENT ===== -->
+        <section class="mt-10 space-y-8 text-sm text-slate-600 leading-relaxed" aria-labelledby="guide-title">
+            <div id="how-to">
+                <h2 id="guide-title" class="text-xl font-bold text-slate-900 mb-3">How to make a receipt or bill online</h2>
+                <p class="mb-3">Both tools live on this page. Choose the tab that matches what you need to hand over:</p>
+                <ol class="list-decimal pl-5 space-y-1.5">
+                    <li>Use the <strong>Bill tab</strong> for an itemised invoice, or the <strong>Quick Receipt tab</strong> for a single payment. The Bill tab opens by default.</li>
+                    <li>Enter your business details once. They are remembered in your browser, and you can add a logo made from your name or your own image file.</li>
+                    <li>Add the customer, the items or the amount. Totals, tax and the amount in words update as you type.</li>
+                    <li>Preview the result, then download it as a PDF, save it as a PNG or send it on WhatsApp.</li>
+                </ol>
+            </div>
+
+            <div id="bill-maker">
+                <h2 class="text-xl font-bold text-slate-900 mb-3">Bill maker for goods, services and tax invoices</h2>
+                <p class="mb-3">The Bill tab creates a full invoice you can print on A4 or send as an image. It is built for shops, freelancers and service businesses that need a proper bill with items, tax and payment details.</p>
+                <ul class="list-disc pl-5 space-y-1.5">
+                    <li><strong>Your currency, automatically:</strong> the currency and phone country code match your region, and you can change them at any time.</li>
+                    <li><strong>Goods or services:</strong> use quantity &times; rate for goods, or a single amount for each service line.</li>
+                    <li><strong>GST, VAT or sales tax:</strong> set your own tax name and rate. Indian users can also split GST into CGST and SGST.</li>
+                    <li><strong>Discounts, split payments and bank details:</strong> record a discount, part payments or your bank account so the customer knows how to pay.</li>
+                    <li><strong>Logo and branding:</strong> auto-generate initials from your business name or upload a logo that never leaves your device.</li>
+                    <li><strong>No login, no cost:</strong> nothing to install and nothing uploaded to a server.</li>
+                </ul>
+            </div>
+
+            <div id="receipt-maker">
+                <h2 class="text-xl font-bold text-slate-900 mb-3">Quick receipt maker for cash, rent and fees</h2>
+                <p class="mb-3">The Quick Receipt tab produces a compact one-page payment slip for everyday transactions. It skips line items and tax, so a receipt takes about thirty seconds to create.</p>
+                <ul class="list-disc pl-5 space-y-1.5">
+                    <li><strong>Rent receipts and deposit slips</strong> for tenants, landlords and paying guests.</li>
+                    <li><strong>Tuition, coaching and school fee receipts</strong> for teachers, tutors and institutes.</li>
+                    <li><strong>Freelance and consulting payments</strong> where a simple acknowledgement is enough.</li>
+                    <li><strong>Shop and retail cash sales</strong> that need a quick printed or WhatsApp receipt.</li>
+                    <li><strong>Payment modes:</strong> mark a receipt as Cash, UPI, Card or Bank Transfer.</li>
+                    <li><strong>Saved shop name:</strong> type it once and it is filled in automatically next time on the same device.</li>
+                </ul>
+            </div>
+
+            <div id="faq">
+                <h2 class="text-xl font-bold text-slate-900 mb-3">Frequently asked questions</h2>
+                <div class="space-y-2">
+                    <details class="bg-white border border-slate-200 rounded-xl p-3">
+                        <summary class="font-semibold text-slate-800">How do I make a receipt or bill online for free?</summary>
+                        <p class="mt-2">Choose the Bill tab for an itemised invoice or the Quick Receipt tab for a simple payment slip, fill in your business and customer details, then preview the result and download it as a PDF or PNG, or share it on WhatsApp. No account is needed.</p>
+                    </details>
+                    <details class="bg-white border border-slate-200 rounded-xl p-3">
+                        <summary class="font-semibold text-slate-800">Which tab should I use: Bill or Quick Receipt?</summary>
+                        <p class="mt-2">The Bill tab creates an itemised bill or tax invoice with quantity, rate, discount, tax and payment details. The Quick Receipt tab creates a one-page cash receipt for rent, tuition fees, freelance work or any single payment.</p>
+                    </details>
+                    <details class="bg-white border border-slate-200 rounded-xl p-3">
+                        <summary class="font-semibold text-slate-800">Do I need an account or login?</summary>
+                        <p class="mt-2">No. There is no sign-up and no login. Everything is created in your browser and nothing you type is uploaded to a server.</p>
+                    </details>
+                    <details class="bg-white border border-slate-200 rounded-xl p-3">
+                        <summary class="font-semibold text-slate-800">Does it use my local currency?</summary>
+                        <p class="mt-2">Yes. The bill maker detects your approximate region and picks the matching currency and phone country code. You can change the currency at any time, and the quick receipt also lets you pick a currency symbol.</p>
+                    </details>
+                    <details class="bg-white border border-slate-200 rounded-xl p-3">
+                        <summary class="font-semibold text-slate-800">Can I add GST, VAT or sales tax?</summary>
+                        <p class="mt-2">Yes. Switch on tax in the Bill tab, set the tax name and rate, and the tool adds it to the total. Indian users can also split GST into CGST and SGST.</p>
+                    </details>
+                    <details class="bg-white border border-slate-200 rounded-xl p-3">
+                        <summary class="font-semibold text-slate-800">Is my data stored on a server?</summary>
+                        <p class="mt-2">No. Your business details and uploaded logo are saved only in your own browser so you do not have to retype them. Your IP address is looked up once to suggest a currency and phone code, and nothing you type in a form is sent anywhere.</p>
+                    </details>
+                    <details class="bg-white border border-slate-200 rounded-xl p-3">
+                        <summary class="font-semibold text-slate-800">Can I send the bill or receipt on WhatsApp?</summary>
+                        <p class="mt-2">Yes. On supported phones the share button attaches the bill or receipt image directly. Otherwise the image is downloaded so you can attach it manually in WhatsApp.</p>
+                    </details>
+                    <details class="bg-white border border-slate-200 rounded-xl p-3">
+                        <summary class="font-semibold text-slate-800">Does the receipt maker work on a phone?</summary>
+                        <p class="mt-2">Yes. Both the bill maker and the quick receipt maker are designed for phones first, with large buttons, plain wording and portrait PDF or PNG output that is easy to send and print.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- PREVIEW MODAL -->
+    <div id="previewModal" class="hidden fixed inset-0 bg-black/60 z-50 items-center justify-center p-4 overflow-y-auto" style="align-items:center;justify-content:center;" role="dialog" aria-modal="true" aria-label="Bill preview">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-5 shadow-2xl relative max-h-[92vh] overflow-y-auto" style="max-width:42rem;width:100%;">
+            <div class="flex justify-between items-center pb-3 border-b border-slate-100 mb-4">
+                <h2 class="font-bold text-lg text-slate-800">Bill Preview</h2>
+                <button type="button" id="closeX" aria-label="Close preview" class="text-slate-400 hover:text-slate-600 text-2xl font-bold px-2 leading-none">&times;</button>
+            </div>
+            <div class="bg-slate-100 rounded-xl p-2">
+                <div id="previewHost" class="bg-white shadow-sm overflow-hidden relative w-full"></div>
+            </div>
+            <div class="mt-5 grid grid-cols-3 gap-2">
+                <button type="button" id="mPdf" class="bg-red-600 hover:bg-red-700 text-white rounded-2xl shadow-md transition flex flex-col items-center gap-2 px-2 py-3">
+                    <span class="icon-tile w-12 h-12"><svg aria-hidden="true"><use href="#icon-pdf"/></svg></span>
+                    <span class="text-xs font-bold leading-tight text-center">Download<br>PDF</span>
+                </button>
+                <button type="button" id="mPng" class="bg-blue-600 hover:bg-blue-700 text-white rounded-2xl shadow-md transition flex flex-col items-center gap-2 px-2 py-3">
+                    <span class="icon-tile w-12 h-12"><svg aria-hidden="true"><use href="#icon-png"/></svg></span>
+                    <span class="text-xs font-bold leading-tight text-center">Save as<br>Picture</span>
+                </button>
+                <button type="button" id="mWa" class="bg-[#25D366] hover:bg-[#1ebe5b] text-white rounded-2xl shadow-md transition flex flex-col items-center gap-2 px-2 py-3">
+                    <span class="icon-tile w-12 h-12"><svg aria-hidden="true"><use href="#icon-wa"/></svg></span>
+                    <span class="text-xs font-bold leading-tight text-center">Send on<br>WhatsApp</span>
+                </button>
+            </div>
+            <button type="button" id="closeBtn" class="mt-3 w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2.5 rounded-xl text-sm transition">Close</button>
+        </div>
+    </div>
+
+    <!-- OFF-SCREEN (RENDERED) BILL USED FOR PDF / PNG / PREVIEW -->
+    <div style="position: fixed; left: -10000px; top: 0; z-index: -1;" aria-hidden="true">
+        <div id="invoiceDoc" style="width: 733px; background: #ffffff; box-sizing: border-box;"></div>
+    </div>
+    <!-- ===== QUICK RECEIPT PREVIEW MODAL ===== -->
+    <div id="receiptModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 p-4 overflow-y-auto hidden" style="display:none;align-items:center;justify-content:center;" role="dialog" aria-modal="true" aria-labelledby="receiptModalTitle">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center pb-3 border-b border-slate-100 mb-4">
+                <h2 id="receiptModalTitle" class="font-bold text-lg text-slate-800">Receipt Preview</h2>
+                <button type="button" id="receiptCloseX" aria-label="Close receipt preview" class="text-slate-400 hover:text-slate-600 text-2xl font-bold px-2 leading-none">&times;</button>
+            </div>
+
+            <div class="p-2 bg-slate-100 rounded-xl overflow-x-auto flex justify-center">
+                <div id="receiptPaper" class="bg-white border border-slate-200 rounded-xl p-6 text-slate-800 shadow-sm font-mono text-sm space-y-4 w-full max-w-[340px] box-border">
+                    <div class="text-center border-b border-dashed border-slate-300 pb-4">
+                        <h3 id="previewIssuer" class="font-bold text-lg text-indigo-700 uppercase tracking-wide">YOUR SHOP NAME</h3>
+                        <p class="text-xs text-slate-500 mt-0.5">PAYMENT RECEIPT</p>
+                    </div>
+
+                    <div class="space-y-1.5 text-xs">
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Receipt No:</span>
+                            <span id="previewNo" class="font-semibold">#101</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Date:</span>
+                            <span id="previewDate" class="font-semibold">-</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Bill To:</span>
+                            <span id="previewCustomer" class="font-semibold">-</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Payment Mode:</span>
+                            <span id="previewMode" class="font-semibold">Cash</span>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-dashed border-slate-300 pt-3">
+                        <p class="text-xs text-slate-500 mb-1">Particulars:</p>
+                        <div id="previewDesc" class="bg-slate-50 p-3 rounded text-xs text-slate-700 min-h-[60px] whitespace-pre-line leading-relaxed">-</div>
+                    </div>
+
+                    <div class="border-t border-dashed border-slate-300 pt-3 flex justify-between items-center">
+                        <span class="font-bold text-slate-600">Total Amount:</span>
+                        <span id="previewAmount" class="font-bold text-lg text-indigo-600">0.00</span>
+                    </div>
+
+                    <div class="pt-8 flex justify-between text-[11px] text-slate-400 border-t border-slate-100">
+                        <span>Authorized Signatory</span>
+                        <span>Thank You!</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 grid grid-cols-3 gap-2">
+                <button type="button" id="receiptModalPdf" class="bg-red-600 hover:bg-red-700 text-white rounded-2xl shadow-md transition flex flex-col items-center gap-2 px-2 py-3">
+                    <span class="icon-tile w-12 h-12"><svg aria-hidden="true"><use href="#icon-pdf"/></svg></span>
+                    <span class="text-xs font-bold leading-tight text-center">Download<br>PDF</span>
+                </button>
+                <button type="button" id="receiptModalPng" class="bg-blue-600 hover:bg-blue-700 text-white rounded-2xl shadow-md transition flex flex-col items-center gap-2 px-2 py-3">
+                    <span class="icon-tile w-12 h-12"><svg aria-hidden="true"><use href="#icon-png"/></svg></span>
+                    <span class="text-xs font-bold leading-tight text-center">Save as<br>Picture</span>
+                </button>
+                <button type="button" id="receiptModalWa" class="bg-[#25D366] hover:bg-[#1ebe5b] text-white rounded-2xl shadow-md transition flex flex-col items-center gap-2 px-2 py-3">
+                    <span class="icon-tile w-12 h-12"><svg aria-hidden="true"><use href="#icon-wa"/></svg></span>
+                    <span class="text-xs font-bold leading-tight text-center">Send on<br>WhatsApp</span>
+                </button>
+            </div>
+            <button type="button" id="receiptModalClose" class="mt-3 w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2.5 rounded-xl text-sm transition">Close</button>
+        </div>
+    </div>
+
+    <!-- OFF-SCREEN TEMPLATE FOR RECEIPT PDF / PNG EXPORT -->
+    <div style="position: fixed; left: -10000px; top: 0; z-index: -1;" aria-hidden="true">
+        <div id="pdfExportTemplate" style="background: #ffffff; width: 340px; padding: 20px; font-family: 'Inter', Arial, sans-serif; color: #1e293b; box-sizing: border-box;">
+            <div style="text-align: center; border-bottom: 2px dashed #cbd5e1; padding-bottom: 12px; margin-bottom: 15px;">
+                <h2 id="pdfIssuer" style="font-size: 18px; font-weight: bold; color: #4338ca; text-transform: uppercase; margin: 0;">YOUR SHOP NAME</h2>
+                <p style="font-size: 11px; color: #64748b; margin: 4px 0 0 0;">PAYMENT RECEIPT</p>
+            </div>
+
+            <div style="font-size: 12px; line-height: 1.6;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <span style="color: #64748b;">Receipt No:</span>
+                    <span id="pdfNo" style="font-weight: bold;">#101</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <span style="color: #64748b;">Date:</span>
+                    <span id="pdfDate" style="font-weight: bold;">-</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <span style="color: #64748b;">Bill To:</span>
+                    <span id="pdfCustomer" style="font-weight: bold;">-</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <span style="color: #64748b;">Payment Mode:</span>
+                    <span id="pdfMode" style="font-weight: bold;">Cash</span>
+                </div>
+            </div>
+
+            <div style="border-top: 2px dashed #cbd5e1; padding-top: 12px; margin-top: 12px;">
+                <p style="font-size: 11px; color: #64748b; margin: 0 0 4px 0;">Particulars:</p>
+                <div id="pdfDesc" style="background: #f8fafc; padding: 10px; border-radius: 6px; font-size: 12px; color: #334155; min-height: 50px; white-space: pre-line; line-height: 1.4;">-</div>
+            </div>
+
+            <div style="border-top: 2px dashed #cbd5e1; padding-top: 12px; margin-top: 12px; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-weight: bold; font-size: 13px; color: #475569;">Total Amount:</span>
+                <span id="pdfAmount" style="font-weight: bold; font-size: 18px; color: #4338ca;">0.00</span>
+            </div>
+
+            <div style="margin-top: 30px; padding-top: 12px; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; font-size: 11px; color: #94a3b8;">
+                <span>Authorized Signatory</span>
+                <span>Thank You!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Footer ===== -->
+    <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-xs text-slate-500 text-center">
+        <div class="max-w-3xl mx-auto px-4 space-y-2">
+            <nav aria-label="Footer" class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-slate-600">
+                <button type="button" data-open-tab="bill" class="font-medium hover:text-indigo-700">Bill &amp; invoice maker</button>
+                <button type="button" data-open-tab="receipt" class="font-medium hover:text-indigo-700">Quick receipt maker</button>
+                <a href="#how-to" class="font-medium hover:text-indigo-700">How it works</a>
+                <a href="#faq" class="font-medium hover:text-indigo-700">FAQ</a>
+            </nav>
+            <p>&copy; 2026 QuickBill. Free Receipt Maker and Bill Maker. All rights reserved.</p>
+            <p>Make receipts, bills and tax invoices for shops, freelancers and service businesses without sign-up.</p>
+            <p class="text-slate-400">Privacy: to suggest your currency and phone code we look up your approximate country from your IP address using a third-party service (ipapi.co). Nothing you type in a form is sent anywhere; business details and your logo are saved only in your own browser.</p>
+        </div>
+    </footer>
+    <script src="geo.js"></script>
+    <script src="logo.js"></script>
+    <script>
+    (function () {
+        'use strict';
+
+        var DOC_WIDTH = 733;
+        var $ = function (id) { return document.getElementById(id); };
+        var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]; }); };
+        var escBr = function (s) { return esc(s).replace(/\n/g, '<br>'); };
+        var num = function (v) { var n = parseFloat(v); return isFinite(n) && n > 0 ? n : 0; };
+        var digitsOf = function (s) { return String(s || '').replace(/\D/g, ''); };
+        function safe(fn) { try { fn(); } catch (e) { console.error('QuickBill init error in ' + (fn.name || 'anonymous') + ':', e); } }
+
+        // geo.js is optional: if it fails to load the tool still works with USD and no auto-fill
+        var Geo = window.QBGeo || {
+            detect: function () { return Promise.resolve(); },
+            currencyInfo: function (code) { return { code: code || 'USD', symbol: code === 'USD' || !code ? '$' : code, decimals: 2, factor: 100, locale: 'en-US' }; },
+            listCurrencies: function () { return [{ code: 'USD', label: 'USD – US Dollar' }, { code: 'EUR', label: 'EUR – Euro' }, { code: 'GBP', label: 'GBP – British Pound' }, { code: 'INR', label: 'INR – Indian Rupee' }]; },
+            taxProfileFor: function () { return ['Tax', 'Tax ID', 0]; }
+        };
+
+        var PROFILE_IDS = ['bizName', 'bizPhone', 'bizEmail', 'bizTaxId', 'bizAddress', 'payBank', 'payAcName', 'payAcNo', 'payCode', 'terms'];
+
+        /* ---------- State ---------- */
+        var currentType = 'goods';
+        var taxOn = false;
+        var items = [{ desc: '', qty: 1, rate: 0 }];
+        var cur = Geo.currencyInfo('USD');
+        var region = { country: '', autoDial: '', taxIdLabel: 'Tax ID' };
+        var currencyDirty = false, taxDirty = false;
+
+        // Payment methods and the one reference field each needs (Cash needs none; Bank Transfer shows bank details)
+        var PAY_METHODS = ['Cash', 'Bank Transfer', 'Card', 'UPI', 'PayPal', 'Cheque'];
+        var PAY_META = {
+            'Cash': { ref: null },
+            'Bank Transfer': { ref: null, bank: true },
+            'Card': { ref: 'Transaction Reference ID', ph: 'Reference number from the card receipt' },
+            'UPI': { ref: 'UTR No.', ph: '12-digit UPI reference number' },
+            'PayPal': { ref: 'PayPal Transaction ID', ph: '17-character transaction ID' },
+            'Cheque': { ref: 'Cheque No.', ph: 'Cheque number' }
+        };
+        var splitRows = [{ method: 'Cash', amount: '', ref: '' }, { method: 'UPI', amount: '', ref: '' }];
+
+        /* ---------- Small UI helpers ---------- */
+        function show(el, on, display) {
+            if (!el) return;
+            el.classList.toggle('hidden', !on);
+            el.style.display = on && display ? display : '';
+        }
+
+        // Every visit starts with all four sections closed (saved details stay in the fields)
+        function closeAllAccordions() {
+            ['secBusiness', 'secCustomer', 'secItems', 'secPayment'].forEach(function (id) {
+                var el = $(id), icon = $(id + 'Icon');
+                if (el) el.classList.add('hidden');
+                if (icon) icon.textContent = '▼';
+            });
+        }
+
+        function toggleAccordion(id) {
+            var hidden = $(id).classList.toggle('hidden');
+            $(id + 'Icon').textContent = hidden ? '▼' : '▲';
+        }
+
+        /* ---------- Currency ---------- */
+        function toMinor(v) { return Math.round(num(v) * cur.factor); }
+        function fmtNum(minor) { return (minor / cur.factor).toLocaleString(cur.locale, { minimumFractionDigits: cur.decimals, maximumFractionDigits: cur.decimals }); }
+        function fmtMoney(minor) { return cur.symbol + (/^[A-Za-z]/.test(cur.symbol) ? ' ' : '') + fmtNum(minor); }
+
+        function setCurrency(code) {
+            cur = Geo.currencyInfo(code);
+            var sel = $('currencySelect');
+            var found = false;
+            for (var i = 0; i < sel.options.length; i++) { if (sel.options[i].value === cur.code) { found = true; break; } }
+            if (!found) {
+                var o = document.createElement('option');
+                o.value = cur.code; o.textContent = cur.code;
+                sel.insertBefore(o, sel.firstChild);
+            }
+            sel.value = cur.code;
+            var syms = document.querySelectorAll('.curSym');
+            for (var j = 0; j < syms.length; j++) syms[j].textContent = cur.symbol;
+            renderItemRows();
+            renderSplitRows();
+            refreshLive();
+        }
+
+        function populateCurrencies() {
+            var sel = $('currencySelect');
+            var list = Geo.listCurrencies();
+            var g1 = document.createElement('optgroup'); g1.label = 'Popular';
+            var g2 = document.createElement('optgroup'); g2.label = 'All currencies';
+            var byCode = {};
+            list.forEach(function (c) { byCode[c.code] = c; });
+            ['USD', 'EUR', 'GBP', 'INR', 'AUD', 'CAD', 'AED', 'SGD'].forEach(function (code) {
+                var c = byCode[code] || { code: code, label: code };
+                var o = document.createElement('option'); o.value = c.code; o.textContent = c.label; g1.appendChild(o);
+            });
+            list.forEach(function (c) { var o = document.createElement('option'); o.value = c.code; o.textContent = c.label; g2.appendChild(o); });
+            sel.appendChild(g1); sel.appendChild(g2);
+            sel.addEventListener('change', function () {
+                currencyDirty = true;
+                $('currencyAuto').textContent = '';
+                setCurrency(sel.value);
+            });
+        }
+
+        /* ---------- Region (phone code, currency, tax defaults) ---------- */
+        function applyRegion(info, source) {
+            var country = (info.country || '').toUpperCase();
+            region.country = country;
+
+            if (!currencyDirty && info.cur) {
+                setCurrency(info.cur);
+                $('currencyAuto').textContent = (source === 'ip' || source === 'cache') ? '(detected from your location)' : '(estimated)';
+            }
+
+            if (info.dial) {
+                ['bizPhone', 'custPhone'].forEach(function (id) {
+                    var el = $(id);
+                    var empty = !el.value.trim() || digitsOf(el.value) === digitsOf(region.autoDial);
+                    if (empty) el.value = info.dial + ' ';
+                });
+                region.autoDial = info.dial;
+            }
+
+            var tp = Geo.taxProfileFor(country);
+            region.taxIdLabel = tp[1];
+            var labels = document.querySelectorAll('.taxIdLabel');
+            for (var i = 0; i < labels.length; i++) labels[i].textContent = tp[1];
+            if (!taxDirty) {
+                $('taxName').value = tp[0];
+                if (!$('taxRate').dataset.touched) $('taxRate').value = tp[2] ? tp[2] : '';
+            }
+            updateSplitVisibility();
+            refreshLive();
+        }
+
+        /* ---------- Bill type & tax ---------- */
+        function setBillType(type) {
+            currentType = type;
+            $('typeGoodsBtn').setAttribute('aria-checked', String(type === 'goods'));
+            $('typeServiceBtn').setAttribute('aria-checked', String(type === 'service'));
+            renderItemRows();
+            refreshLive();
+        }
+
+        function setTax(on) {
+            taxOn = on;
+            $('taxYesBtn').setAttribute('aria-pressed', String(on));
+            $('taxNoBtn').setAttribute('aria-pressed', String(!on));
+            show($('taxBizField'), on);
+            show($('taxCustField'), on);
+            show($('taxBlock'), on);
+            updateSplitVisibility();
+            refreshLive();
+        }
+
+        function updateSplitVisibility() {
+            var on = taxOn && region.country === 'IN' && /gst/i.test($('taxName').value);
+            show($('splitRow'), on, 'flex');
+        }
+
+        /* ---------- Items ---------- */
+        function addItemRow() { items.push({ desc: '', qty: 1, rate: 0 }); renderItemRows(); refreshLive(); }
+        function removeItemRow(i) { if (items.length > 1) { items.splice(i, 1); renderItemRows(); refreshLive(); } }
+
+        function makeInput(type, placeholder, value, onInput) {
+            var inp = document.createElement('input');
+            inp.type = type; inp.placeholder = placeholder; inp.value = value; inp.className = 'fld';
+            if (type === 'number') { inp.setAttribute('inputmode', 'decimal'); inp.min = '0'; inp.step = 'any'; }
+            inp.addEventListener('input', function () { onInput(inp.value); refreshLive(); });
+            return inp;
+        }
+
+        function renderItemRows() {
+            var container = $('itemsContainer');
+            container.innerHTML = '';
+            items.forEach(function (row, i) {
+                var wrap = document.createElement('div');
+                wrap.className = 'p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-2';
+
+                var top = document.createElement('div');
+                top.className = 'flex items-center gap-2';
+                top.style.display = 'flex'; top.style.gap = '8px'; top.style.alignItems = 'center';
+                top.appendChild(makeInput('text', currentType === 'goods' ? 'Item description' : 'Service description', row.desc, function (v) { row.desc = v; }));
+
+                if (currentType === 'service') {
+                    var amt = makeInput('number', 'Amount (' + cur.symbol + ')', row.rate || '', function (v) { row.rate = num(v); });
+                    amt.style.maxWidth = '9rem';
+                    top.appendChild(amt);
+                }
+                var del = document.createElement('button');
+                del.type = 'button';
+                del.setAttribute('aria-label', 'Remove item');
+                del.className = 'text-red-500 font-bold px-2 text-xl leading-none';
+                del.innerHTML = '&times;';
+                del.addEventListener('click', function () { removeItemRow(i); });
+                top.appendChild(del);
+                wrap.appendChild(top);
+
+                if (currentType === 'goods') {
+                    var grid = document.createElement('div');
+                    grid.style.display = 'grid'; grid.style.gridTemplateColumns = 'repeat(3, minmax(0, 1fr))'; grid.style.gap = '8px'; grid.style.alignItems = 'center';
+                    grid.style.marginTop = '8px';
+                    grid.appendChild(makeInput('number', 'Qty', row.qty === 0 ? '' : row.qty, function (v) { row.qty = num(v); }));
+                    grid.appendChild(makeInput('number', 'Rate (' + cur.symbol + ')', row.rate || '', function (v) { row.rate = num(v); }));
+                    var amtBox = document.createElement('div');
+                    amtBox.className = 'text-right text-sm font-semibold text-slate-700';
+                    amtBox.setAttribute('data-amt', String(i));
+                    grid.appendChild(amtBox);
+                    wrap.appendChild(grid);
+                }
+                container.appendChild(wrap);
+            });
+        }
+
+        function lineAmount(row) {
+            var rate = Math.round((row.rate || 0) * cur.factor);
+            return currentType === 'goods' ? Math.round((row.qty || 0) * rate) : rate;
+        }
+
+        function calculateTotals() {
+            var subtotal = items.reduce(function (s, r) { return s + lineAmount(r); }, 0);
+            var discount = Math.min(toMinor($('discount').value), subtotal);
+            var taxable = subtotal - discount;
+            var rate = Math.min(num($('taxRate').value), 100);
+            var name = ($('taxName').value || 'Tax').trim();
+            var taxLines = [];
+            if (taxOn && rate > 0) {
+                var r = function (x) { return +x.toFixed(2); };
+                var splitOn = $('taxSplit').checked && !$('splitRow').classList.contains('hidden');
+                if (splitOn) {
+                    var half = Math.round(taxable * rate / 200);
+                    taxLines.push({ label: 'CGST @ ' + r(rate / 2) + '%', amt: half }, { label: 'SGST @ ' + r(rate / 2) + '%', amt: half });
+                } else {
+                    taxLines.push({ label: name + ' @ ' + r(rate) + '%', amt: Math.round(taxable * rate / 100) });
+                }
+            }
+            var taxTotal = taxLines.reduce(function (s, l) { return s + l.amt; }, 0);
+            return { subtotal: subtotal, discount: discount, taxable: taxable, taxLines: taxLines, total: taxable + taxTotal };
+        }
+
+        function refreshLive() {
+            var amts = document.querySelectorAll('[data-amt]');
+            for (var k = 0; k < amts.length; k++) {
+                var idx = Number(amts[k].getAttribute('data-amt'));
+                if (items[idx]) amts[k].textContent = fmtMoney(lineAmount(items[idx]));
+            }
+            var t = calculateTotals();
+            var rows = [['Subtotal', fmtMoney(t.subtotal)]];
+            if (t.discount > 0) rows.push(['Discount', '- ' + fmtMoney(t.discount)]);
+            t.taxLines.forEach(function (l) { rows.push([l.label, fmtMoney(l.amt)]); });
+
+            var box = $('liveTotals');
+            box.innerHTML = '';
+            rows.forEach(function (pair) {
+                var d = document.createElement('div');
+                d.className = 'flex justify-between text-slate-600';
+                d.style.display = 'flex'; d.style.justifyContent = 'space-between';
+                var a = document.createElement('span'); a.textContent = pair[0];
+                var b = document.createElement('span'); b.textContent = pair[1];
+                d.appendChild(a); d.appendChild(b);
+                box.appendChild(d);
+            });
+            var tot = document.createElement('div');
+            tot.className = 'flex justify-between font-bold text-slate-900 text-sm pt-1 border-t border-slate-200';
+            tot.style.display = 'flex'; tot.style.justifyContent = 'space-between';
+            var ta = document.createElement('span'); ta.textContent = 'TOTAL';
+            var tb = document.createElement('span'); tb.textContent = fmtMoney(t.total);
+            tot.appendChild(ta); tot.appendChild(tb);
+            box.appendChild(tot);
+            updateSplitStatus();
+        }
+
+        /* ---------- Payment mode, references & split payments ---------- */
+        function updatePaymentUI() {
+            var mode = $('payMode').value;
+            var isSplit = mode === 'Split Payment';
+            var meta = PAY_META[mode] || {};
+            var needBank = isSplit ? splitRows.some(function (r) { return r.method === 'Bank Transfer'; }) : !!meta.bank;
+            show($('payBankBlock'), needBank);
+            show($('payRefBlock'), !isSplit && !!meta.ref);
+            if (meta.ref) { $('payRefLabel').textContent = meta.ref; $('payRef').placeholder = meta.ph || ''; }
+            show($('splitBlock'), isSplit);
+            updateSplitStatus();
+        }
+
+        function onPayModeChange() {
+            $('payRef').value = '';
+            updatePaymentUI();
+        }
+
+        function splitPaidMinor(exceptIndex) {
+            return splitRows.reduce(function (sum, r, i) { return i === exceptIndex ? sum : sum + toMinor(r.amount); }, 0);
+        }
+
+        function updateSplitStatus() {
+            var el = $('splitStatus');
+            if (!el) return;
+            if ($('payMode').value !== 'Split Payment') { el.textContent = ''; return; }
+            var total = calculateTotals().total;
+            var diff = total - splitPaidMinor(-1);
+            var msg, color;
+            if (total <= 0) { msg = 'Add your items first, then split the total here.'; color = '#64748b'; }
+            else if (diff === 0) { msg = '✓ Payments add up to the bill total (' + fmtMoney(total) + ')'; color = '#15803d'; }
+            else if (diff > 0) { msg = 'Still to enter: ' + fmtMoney(diff) + ' (bill total ' + fmtMoney(total) + ')'; color = '#b45309'; }
+            else { msg = 'Too much by ' + fmtMoney(-diff) + ' (bill total ' + fmtMoney(total) + ')'; color = '#b91c1c'; }
+            el.textContent = msg;
+            el.style.color = color;
+        }
+
+        function renderSplitRows() {
+            var box = $('splitRows');
+            if (!box) return;
+            box.innerHTML = '';
+            splitRows.forEach(function (row, i) {
+                var wrap = document.createElement('div');
+                wrap.className = 'p-3 bg-slate-50 rounded-lg border border-slate-200';
+
+                var l1 = document.createElement('div');
+                l1.style.display = 'flex'; l1.style.gap = '8px'; l1.style.alignItems = 'center';
+                var sel = document.createElement('select');
+                sel.className = 'fld';
+                sel.setAttribute('aria-label', 'Payment method ' + (i + 1));
+                PAY_METHODS.forEach(function (m) {
+                    var o = document.createElement('option'); o.value = m; o.textContent = m;
+                    if (m === row.method) o.selected = true;
+                    sel.appendChild(o);
+                });
+                sel.addEventListener('change', function () {
+                    row.method = sel.value; row.ref = '';
+                    renderSplitRows(); updatePaymentUI();
+                });
+                l1.appendChild(sel);
+                if (splitRows.length > 2) {
+                    var del = document.createElement('button');
+                    del.type = 'button';
+                    del.setAttribute('aria-label', 'Remove this payment');
+                    del.className = 'text-red-500 font-bold px-2 text-xl leading-none';
+                    del.innerHTML = '&times;';
+                    del.addEventListener('click', function () {
+                        splitRows.splice(i, 1); renderSplitRows(); updatePaymentUI();
+                    });
+                    l1.appendChild(del);
+                }
+                wrap.appendChild(l1);
+
+                var l2 = document.createElement('div');
+                l2.style.display = 'flex'; l2.style.gap = '8px'; l2.style.alignItems = 'center'; l2.style.marginTop = '8px';
+                var amt = document.createElement('input');
+                amt.type = 'number'; amt.className = 'fld'; amt.min = '0'; amt.step = 'any';
+                amt.setAttribute('inputmode', 'decimal');
+                amt.placeholder = 'Amount (' + cur.symbol + ')';
+                amt.value = row.amount;
+                amt.setAttribute('aria-label', 'Amount for payment ' + (i + 1));
+                amt.addEventListener('input', function () { row.amount = amt.value; updateSplitStatus(); });
+                l2.appendChild(amt);
+                var rest = document.createElement('button');
+                rest.type = 'button';
+                rest.textContent = 'Use remaining';
+                rest.className = 'text-xs font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 rounded-lg px-3 py-2';
+                rest.style.whiteSpace = 'nowrap';
+                rest.addEventListener('click', function () {
+                    var left = calculateTotals().total - splitPaidMinor(i);
+                    row.amount = left > 0 ? String(+(left / cur.factor).toFixed(cur.decimals)) : '';
+                    renderSplitRows(); updateSplitStatus();
+                });
+                l2.appendChild(rest);
+                wrap.appendChild(l2);
+
+                var meta = PAY_META[row.method] || {};
+                if (meta.ref) {
+                    var ref = document.createElement('input');
+                    ref.type = 'text'; ref.className = 'fld'; ref.maxLength = 40;
+                    ref.placeholder = meta.ref + ' (optional)';
+                    ref.value = row.ref;
+                    ref.style.marginTop = '8px';
+                    ref.setAttribute('aria-label', meta.ref + ' for payment ' + (i + 1));
+                    ref.addEventListener('input', function () { row.ref = ref.value; });
+                    wrap.appendChild(ref);
+                }
+                box.appendChild(wrap);
+            });
+        }
+
+        function addSplitRow() {
+            splitRows.push({ method: 'Cash', amount: '', ref: '' });
+            renderSplitRows();
+            updatePaymentUI();
+        }
+
+        function buildPaymentHTML() {
+            var v = function (id) { return $(id).value.trim(); };
+            var kv = function (k, val) { return '<div><span style="color:#64748b;">' + esc(k) + ':</span> <span style="font-weight:600;">' + esc(val) + '</span></div>'; };
+            var bank = function () {
+                return [['Bank', v('payBank')], ['A/C Name', v('payAcName')], ['A/C No', v('payAcNo')], ['Bank Code', v('payCode').toUpperCase()]]
+                    .filter(function (r) { return r[1]; })
+                    .map(function (r) { return kv(r[0], r[1]); }).join('');
+            };
+            var mode = $('payMode').value;
+
+            if (mode === 'Split Payment') {
+                var rows = splitRows.filter(function (r) { return toMinor(r.amount) > 0; });
+                if (!rows.length) return '';
+                var html = '<table style="width:100%;border-collapse:collapse;margin-bottom:4px;">' + rows.map(function (r) {
+                    var m = PAY_META[r.method] || {};
+                    var ref = (m.ref && r.ref.trim()) ? esc(m.ref + ': ' + r.ref.trim()) : '';
+                    return '<tr><td style="padding:2px 10px 2px 0;font-weight:600;">' + esc(r.method) + '</td>' +
+                           '<td style="padding:2px 10px;color:#64748b;">' + ref + '</td>' +
+                           '<td style="padding:2px 0;text-align:right;font-weight:600;">' + esc(fmtMoney(toMinor(r.amount))) + '</td></tr>';
+                }).join('') + '</table>';
+                if (rows.some(function (r) { return r.method === 'Bank Transfer'; })) html += bank();
+                return html;
+            }
+
+            var meta = PAY_META[mode] || {};
+            if (meta.bank) return bank();
+            if (meta.ref && v('payRef')) return kv(meta.ref, v('payRef'));
+            return '';
+        }
+
+        /* ---------- Logo (none / auto-generate / upload) ---------- */
+        var Logo = window.QBLogo || null;
+        var logoMode = 'none', logoData = '', logoW = 0, logoH = 0, logoBusy = false;
+
+        function logoUpload() { return { data: logoData, w: logoW, h: logoH }; }
+
+        function updateLogoUI() {
+            if (!Logo) return;
+            var ini = Logo.initials($('bizName').value);
+            $('logoAutoPreview').innerHTML = ini ? Logo.badge(ini, 40) : '';
+            $('logoAutoHint').textContent = ini
+                ? 'Made from your business name. If you change the name, the logo changes too.'
+                : 'Type your business name above to see your logo.';
+            var has = Logo.validUpload(logoUpload());
+            show($('logoThumbRow'), has, 'flex');
+            if (has) $('logoThumb').src = logoData;
+            if (logoMode === 'upload' && !has && !$('logoMsg').textContent) {
+                $('logoMsg').style.color = '#64748b';
+                $('logoMsg').textContent = 'Choose a PNG, JPG or WebP file.';
+            }
+        }
+
+        function persistLogo() {
+            if (!Logo) return;
+            if (!Logo.save(logoMode, logoUpload()) && logoMode === 'upload') {
+                $('logoMsg').style.color = '#b45309';
+                $('logoMsg').textContent = 'Your logo could not be remembered on this device, but it will still appear on this bill.';
+            }
+        }
+
+        function setLogoMode(mode, save) {
+            logoMode = mode;
+            [['none', 'logoNoneBtn'], ['auto', 'logoAutoBtn'], ['upload', 'logoUploadBtn']].forEach(function (p) {
+                $(p[1]).setAttribute('aria-pressed', String(p[0] === mode));
+            });
+            show($('logoAutoBlock'), mode === 'auto');
+            show($('logoUploadBlock'), mode === 'upload');
+            if (mode !== 'upload') $('logoMsg').textContent = '';
+            updateLogoUI();
+            if (save) persistLogo();
+        }
+
+        function onLogoFile() {
+            var f = $('logoFile').files && $('logoFile').files[0];
+            if (!f) return;
+            logoBusy = true;
+            $('logoMsg').style.color = '#64748b';
+            $('logoMsg').textContent = 'Preparing your logo…';
+            Logo.processFile(f).then(function (res) {
+                logoData = res.data; logoW = res.w; logoH = res.h;
+                $('logoMsg').textContent = '';
+                updateLogoUI();
+                persistLogo();
+            }).catch(function (err) {
+                $('logoMsg').style.color = '#b91c1c';
+                $('logoMsg').textContent = err.message;
+                $('logoFile').value = '';
+            }).then(function () { logoBusy = false; });
+        }
+
+        function removeLogo() {
+            logoData = ''; logoW = 0; logoH = 0;
+            $('logoFile').value = '';
+            $('logoMsg').textContent = '';
+            updateLogoUI();
+            persistLogo();
+        }
+
+        function initLogo() {
+            if (!Logo) { show($('logoBlock'), false); return; }
+            $('logoNoneBtn').addEventListener('click', function () { setLogoMode('none', true); });
+            $('logoAutoBtn').addEventListener('click', function () { setLogoMode('auto', true); });
+            $('logoUploadBtn').addEventListener('click', function () { setLogoMode('upload', true); });
+            $('logoFile').addEventListener('change', onLogoFile);
+            $('logoRemoveBtn').addEventListener('click', removeLogo);
+            $('bizName').addEventListener('input', updateLogoUI);
+            var saved = Logo.load();
+            if (saved) {
+                logoData = saved.upload.data; logoW = saved.upload.w; logoH = saved.upload.h;
+                setLogoMode(saved.mode, false);
+            } else {
+                setLogoMode('none', false);
+            }
+        }
+
+        // Header (left side of the bill): optional logo, then business name and details
+        function buildBizHeader(biz, bizLines) {
+            var nameHTML = '<div style="font-size:20px;font-weight:700;color:#0f172a;">' + esc(biz.name) + '</div>' + bizLines;
+            var logo = (Logo && logoMode !== 'none') ? Logo.render(logoMode, logoUpload(), $('bizName').value.trim()) : '';
+            if (!logo) return nameHTML;
+            return '<table style="border-collapse:collapse;"><tr>' +
+                '<td style="vertical-align:top;padding-right:14px;">' + logo + '</td>' +
+                '<td style="vertical-align:top;">' + nameHTML + '</td></tr></table>';
+        }
+
+        function waitForImages() {
+            var imgs = $('invoiceDoc').querySelectorAll('img');
+            return Promise.all(Array.prototype.map.call(imgs, function (im) {
+                return (im.decode ? im.decode() : Promise.resolve()).catch(function () {});
+            }));
+        }
+
+        /* ---------- Dates & amount in words ---------- */
+        function localISO(d) {
+            return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+        }
+        function fmtDate(iso) {
+            if (!iso) return '';
+            var p = iso.split('-');
+            if (p.length !== 3) return iso;
+            var mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][Number(p[1]) - 1];
+            return Number(p[2]) + ' ' + mon + ' ' + p[0];
+        }
+
+        var ONES = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+        var TENS = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+        function below100(n) { return n < 20 ? ONES[n] : TENS[Math.floor(n / 10)] + (n % 10 ? ' ' + ONES[n % 10] : ''); }
+        function below1000(n) { return (n >= 100 ? ONES[Math.floor(n / 100)] + ' Hundred' + (n % 100 ? ' ' : '') : '') + (n % 100 ? below100(n % 100) : ''); }
+
+        function indianWords(n) {
+            if (n === 0) return 'Zero';
+            var parts = [];
+            var crore = Math.floor(n / 10000000), lakh = Math.floor((n % 10000000) / 100000), thousand = Math.floor((n % 100000) / 1000);
+            if (crore) parts.push(indianWords(crore) + ' Crore');
+            if (lakh) parts.push(below100(lakh) + ' Lakh');
+            if (thousand) parts.push(below100(thousand) + ' Thousand');
+            if (n % 1000 >= 100) parts.push(ONES[Math.floor((n % 1000) / 100)] + ' Hundred');
+            if (n % 100) parts.push(below100(n % 100));
+            return parts.join(' ');
+        }
+        function westernWords(n) {
+            if (n === 0) return 'Zero';
+            var scales = ['', ' Thousand', ' Million', ' Billion', ' Trillion'];
+            var parts = [], i = 0;
+            while (n > 0 && i < scales.length) {
+                var chunk = n % 1000;
+                if (chunk) parts.unshift(below1000(chunk) + scales[i]);
+                n = Math.floor(n / 1000); i++;
+            }
+            return parts.join(' ');
+        }
+        function amountInWords(minor) {
+            var major = Math.floor(minor / cur.factor);
+            var rest = minor % cur.factor;
+            if (cur.code === 'INR') {
+                if (major === 0 && rest > 0) return below100(rest) + ' Paise Only';
+                return 'Rupees ' + indianWords(major) + (rest ? ' and ' + below100(rest) + ' Paise' : '') + ' Only';
+            }
+            var s = cur.code + ' ' + westernWords(major);
+            if (cur.decimals > 0 && rest > 0) s += ' and ' + String(rest).padStart(cur.decimals, '0') + '/' + cur.factor;
+            return s + ' Only';
+        }
+
+        /* ---------- Bill rendering ---------- */
+        function buildInvoiceHTML() {
+            var v = function (id) { return $(id).value.trim(); };
+            var t = calculateTotals();
+            var accent = '#4338ca';
+            var isGoods = currentType === 'goods';
+            var sym = esc(cur.symbol);
+            var cleanPhone = function (p) { return (!p || digitsOf(p) === digitsOf(region.autoDial)) ? '' : p; };
+
+            var biz = { name: v('bizName') || 'Your Company Name', address: v('bizAddress'), phone: cleanPhone(v('bizPhone')), email: v('bizEmail'), tax: v('bizTaxId').toUpperCase() };
+            var cust = { name: v('custName') || 'Customer Name', address: v('custAddress'), phone: cleanPhone(v('custPhone')), email: v('custEmail'), tax: v('custTaxId').toUpperCase() };
+            var taxLbl = esc(region.taxIdLabel || 'Tax ID');
+
+            var line = function (txt) { return txt ? '<div style="font-size:11px;color:#64748b;">' + txt + '</div>' : ''; };
+            var bizLines = line(escBr(biz.address)) + line(biz.phone ? 'Phone: ' + esc(biz.phone) : '') + line(biz.email ? 'Email: ' + esc(biz.email) : '') + line(taxOn && biz.tax ? taxLbl + ': ' + esc(biz.tax) : '');
+            var custLines = line(escBr(cust.address)) + line(cust.phone ? 'Phone: ' + esc(cust.phone) : '') + line(cust.email ? 'Email: ' + esc(cust.email) : '') + line(taxOn && cust.tax ? taxLbl + ': ' + esc(cust.tax) : '');
+
+            var metaRow = function (l, val) { return val ? '<tr><td style="padding:2px 12px 2px 0;color:#64748b;text-align:right;">' + l + '</td><td style="padding:2px 0;font-weight:700;text-align:right;">' + esc(val) + '</td></tr>' : ''; };
+            var th = function (label, align, w) { return '<th style="padding:8px 10px;font-size:10.5px;font-weight:700;letter-spacing:0.5px;color:#ffffff;background:#1e293b;text-align:' + align + ';' + (w ? 'width:' + w + ';' : '') + '">' + label + '</th>'; };
+            var td = function (content, align, extra) { return '<td style="padding:9px 10px;border-bottom:1px solid #e2e8f0;vertical-align:top;text-align:' + align + ';' + (extra || '') + '">' + content + '</td>'; };
+
+            var head = th('#', 'left', '30px') + th('DESCRIPTION', 'left');
+            if (isGoods) head += th('QTY', 'right', '60px') + th('RATE (' + sym + ')', 'right', '100px');
+            head += th('AMOUNT (' + sym + ')', 'right', '115px');
+
+            var body = items.map(function (r, i) {
+                var tr = td(i + 1, 'left', 'color:#64748b;') + td(esc(r.desc) || '-', 'left');
+                if (isGoods) tr += td(esc(r.qty), 'right') + td(fmtNum(Math.round((r.rate || 0) * cur.factor)), 'right');
+                tr += td(fmtNum(lineAmount(r)), 'right', 'font-weight:600;');
+                return '<tr style="page-break-inside:avoid;">' + tr + '</tr>';
+            }).join('');
+
+            var totRow = function (l, val) { return '<tr><td style="padding:4px 10px;color:#475569;">' + l + '</td><td style="padding:4px 10px;text-align:right;">' + val + '</td></tr>'; };
+            var totals = '';
+            if (t.taxLines.length || t.discount > 0) totals += totRow('Subtotal', fmtNum(t.subtotal));
+            if (t.discount > 0) totals += totRow('Discount', '- ' + fmtNum(t.discount));
+            t.taxLines.forEach(function (l) { totals += totRow(esc(l.label), fmtNum(l.amt)); });
+            totals += '<tr><td style="padding:8px 10px;background:' + accent + ';color:#fff;font-weight:700;">TOTAL (' + sym + ')</td><td style="padding:8px 10px;background:' + accent + ';color:#fff;font-weight:700;text-align:right;font-size:14px;">' + fmtNum(t.total) + '</td></tr>';
+
+            var payRows = buildPaymentHTML();
+            var termLines = $('terms').value.split('\n').map(function (s) { return s.trim(); }).filter(Boolean)
+                .map(function (s) { return '<div>' + esc(s) + '</div>'; }).join('');
+
+            return '' +
+            '<div style="padding:28px;font-family:\'Inter\',Arial,sans-serif;color:#1e293b;font-size:12px;line-height:1.5;">' +
+                '<table style="width:100%;border-collapse:collapse;border-bottom:3px solid ' + accent + ';"><tr>' +
+                    '<td style="vertical-align:top;padding-bottom:14px;">' + buildBizHeader(biz, bizLines) + '</td>' +
+                    '<td style="vertical-align:top;text-align:right;padding-bottom:14px;"><div style="font-size:30px;font-weight:700;color:' + accent + ';letter-spacing:2px;">INVOICE</div></td>' +
+                '</tr></table>' +
+                '<table style="width:100%;border-collapse:collapse;margin:18px 0;"><tr>' +
+                    '<td style="vertical-align:top;width:55%;"><div style="font-size:10px;font-weight:700;color:#94a3b8;letter-spacing:1px;margin-bottom:3px;">BILL TO</div><div style="font-size:14px;font-weight:700;">' + esc(cust.name) + '</div>' + custLines + '</td>' +
+                    '<td style="vertical-align:top;"><table style="margin-left:auto;border-collapse:collapse;">' +
+                        metaRow('Invoice No:', v('billNo')) + metaRow('Invoice Date:', fmtDate($('billDate').value)) + metaRow('Due Date:', fmtDate($('dueDate').value)) + metaRow('Payment Mode:', $('payMode').value) +
+                    '</table></td>' +
+                '</tr></table>' +
+                '<table style="width:100%;border-collapse:collapse;"><thead><tr>' + head + '</tr></thead><tbody>' + body + '</tbody></table>' +
+                '<div class="avoid-break" style="page-break-inside:avoid;">' +
+                    '<table style="width:290px;margin-left:auto;margin-top:12px;border-collapse:collapse;">' + totals + '</table>' +
+                    '<div style="margin-top:12px;padding:8px 10px;background:#f1f5f9;border-radius:6px;font-size:11.5px;"><span style="color:#64748b;">Amount in words:</span> <span style="font-weight:600;">' + esc(amountInWords(t.total)) + '</span></div>' +
+                    '<table style="width:100%;border-collapse:collapse;margin-top:18px;"><tr>' +
+                        '<td style="vertical-align:top;width:55%;">' + (payRows ? '<div style="font-size:10px;font-weight:700;color:#94a3b8;letter-spacing:1px;margin-bottom:3px;">PAYMENT DETAILS</div><div style="font-size:11.5px;">' + payRows + '</div>' : '') + '</td>' +
+                        '<td style="vertical-align:bottom;text-align:right;"><div style="font-size:11.5px;">For <span style="font-weight:700;">' + esc(biz.name) + '</span></div><div style="height:48px;"></div>' +
+                        '<div style="border-top:1px solid #94a3b8;display:inline-block;padding-top:3px;min-width:160px;font-size:10.5px;color:#64748b;">Authorised Signatory</div></td>' +
+                    '</tr></table>' +
+                    (termLines ? '<div style="margin-top:18px;"><div style="font-size:10px;font-weight:700;color:#94a3b8;letter-spacing:1px;margin-bottom:3px;">TERMS & NOTES</div><div style="font-size:10.5px;color:#64748b;">' + termLines + '</div></div>' : '') +
+                    '<div style="margin-top:20px;padding-top:10px;border-top:1px solid #e2e8f0;text-align:center;font-size:10.5px;color:#94a3b8;">Thank you for your business!</div>' +
+                '</div>' +
+            '</div>';
+        }
+
+        function ensureReady(strict) {
+            if (strict && logoBusy) {
+                alert('Your logo is still being prepared. Please try again in a moment.');
+                return false;
+            }
+            if (!items.some(function (r) { return lineAmount(r) > 0; })) {
+                alert('Please add at least one item with an amount.');
+                return false;
+            }
+            if (strict && $('payMode').value === 'Split Payment') {
+                var total = calculateTotals().total, paid = splitPaidMinor(-1);
+                if (paid !== total && !confirm('The split payments add up to ' + fmtMoney(paid) + ' but the bill total is ' + fmtMoney(total) + '. Create the bill anyway?')) return false;
+            }
+            $('invoiceDoc').innerHTML = buildInvoiceHTML();
+            return true;
+        }
+
+        /* ---------- Preview ---------- */
+        function openPreview() {
+            if (!ensureReady()) return;
+            var modal = $('previewModal');
+            modal.classList.remove('hidden');
+            modal.style.display = 'flex';
+
+            var host = $('previewHost'), doc = $('invoiceDoc');
+            host.innerHTML = '';
+            var clone = doc.cloneNode(true);
+            clone.removeAttribute('id');
+            var scale = Math.min(1, host.clientWidth / DOC_WIDTH);
+            clone.style.transform = 'scale(' + scale + ')';
+            clone.style.transformOrigin = 'top left';
+            host.style.height = (doc.offsetHeight * scale) + 'px';
+            host.appendChild(clone);
+        }
+        function closePreview() {
+            var modal = $('previewModal');
+            modal.classList.add('hidden');
+            modal.style.display = '';
+        }
+
+        /* ---------- Export ---------- */
+        function safeBillNo() { return ($('billNo').value || 'Bill').replace(/[^\w\-]+/g, '') || 'Bill'; }
+
+        function generateBlob() {
+            if (!ensureReady(true)) return Promise.resolve(null);
+            var fonts = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+            return fonts.then(waitForImages).then(function () {
+                if (typeof html2canvas !== 'function') throw new Error('html2canvas not loaded');
+                return html2canvas($('invoiceDoc'), { scale: 2, useCORS: true, logging: false, backgroundColor: '#ffffff', scrollX: 0, scrollY: 0 });
+            }).then(function (canvas) {
+                return new Promise(function (res) { canvas.toBlob(res, 'image/png'); });
+            });
+        }
+
+        function triggerBlobDownload(blob, fileName) {
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url; a.download = fileName;
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+        }
+
+        function downloadPDF() {
+            if (!ensureReady(true)) return;
+            if (typeof html2pdf !== 'function') { alert('PDF library could not load. Check your internet connection and reload.'); return; }
+            var fonts = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+            fonts.then(waitForImages).then(function () {
+                var opt = {
+                    margin: 8,
+                    filename: 'Invoice_' + safeBillNo() + '.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2, useCORS: true, logging: false, backgroundColor: '#ffffff', scrollX: 0, scrollY: 0 },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                    pagebreak: { mode: ['css', 'legacy'], avoid: ['tr', '.avoid-break'] }
+                };
+                html2pdf().set(opt).from($('invoiceDoc')).save();
+            });
+        }
+
+        function downloadPNG() {
+            generateBlob().then(function (blob) {
+                if (blob) triggerBlobDownload(blob, 'Invoice_' + safeBillNo() + '.png');
+            }).catch(function (e) { console.error(e); alert('Could not create the image. Please reload and try again.'); });
+        }
+
+        function shareWhatsApp() {
+            var fileName = 'Invoice_' + safeBillNo() + '.png';
+            var message = 'Hi!! Here is your bill. Thanks.';
+            generateBlob().then(function (blob) {
+                if (!blob) return;
+                var file = new File([blob], fileName, { type: 'image/png' });
+                var fallback = function () {
+                    triggerBlobDownload(blob, fileName);
+                    alert('Your browser cannot attach files directly. The bill image was downloaded. Attach it manually in WhatsApp.');
+                    setTimeout(function () { window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(message), '_blank'); }, 500);
+                };
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    return navigator.share({ files: [file], title: 'Bill', text: message }).catch(function (e) {
+                        if (e && e.name === 'AbortError') return;
+                        console.warn('Share failed, using fallback:', e);
+                        fallback();
+                    });
+                }
+                fallback();
+            }).catch(function (e) { console.error(e); alert('Could not create the image. Please reload and try again.'); });
+        }
+
+        /* ---------- Wire up ---------- */
+        function bindEvents() {
+            $('billForm').addEventListener('submit', function (e) { e.preventDefault(); });
+            $('typeGoodsBtn').addEventListener('click', function () { setBillType('goods'); });
+            $('typeServiceBtn').addEventListener('click', function () { setBillType('service'); });
+            $('taxNoBtn').addEventListener('click', function () { setTax(false); });
+            $('taxYesBtn').addEventListener('click', function () { setTax(true); });
+            $('addItemBtn').addEventListener('click', addItemRow);
+            $('discount').addEventListener('input', refreshLive);
+            $('taxRate').addEventListener('input', function () { $('taxRate').dataset.touched = '1'; refreshLive(); });
+            $('taxName').addEventListener('input', function () { taxDirty = true; updateSplitVisibility(); refreshLive(); });
+            $('taxSplit').addEventListener('change', refreshLive);
+            $('payMode').addEventListener('change', onPayModeChange);
+            $('addSplitBtn').addEventListener('click', addSplitRow);
+            $('previewBtn').addEventListener('click', openPreview);
+            $('pdfBtn').addEventListener('click', downloadPDF);
+            $('pngBtn').addEventListener('click', downloadPNG);
+            $('waBtn').addEventListener('click', shareWhatsApp);
+            $('closeX').addEventListener('click', closePreview);
+            $('closeBtn').addEventListener('click', closePreview);
+            $('mPdf').addEventListener('click', function () { closePreview(); downloadPDF(); });
+            $('mPng').addEventListener('click', function () { closePreview(); downloadPNG(); });
+            $('mWa').addEventListener('click', function () { closePreview(); shareWhatsApp(); });
+            var accs = document.querySelectorAll('[data-acc]');
+            for (var i = 0; i < accs.length; i++) {
+                (function (btn) { btn.addEventListener('click', function () { toggleAccordion(btn.getAttribute('data-acc')); }); })(accs[i]);
+            }
+        }
+
+        function loadProfile() {
+            var saved = {};
+            try { saved = JSON.parse(localStorage.getItem('qb_profile') || '{}'); } catch (e) {}
+            PROFILE_IDS.forEach(function (id) { if (saved[id] != null && saved[id] !== '') $(id).value = saved[id]; });
+            PROFILE_IDS.forEach(function (id) {
+                var save = function () {
+                    var data = {};
+                    PROFILE_IDS.forEach(function (k) { data[k] = $(k).value; });
+                    try { localStorage.setItem('qb_profile', JSON.stringify(data)); } catch (e) {}
+                };
+                $(id).addEventListener('input', save);
+                $(id).addEventListener('change', save);
+            });
+        }
+
+        function init() {
+            safe(bindEvents);
+            safe(function setDates() {
+                var today = new Date(), due = new Date();
+                due.setDate(due.getDate() + 15);
+                $('billDate').value = localISO(today);
+                $('dueDate').value = localISO(due);
+            });
+            safe(populateCurrencies);
+            safe(loadProfile);
+            safe(closeAllAccordions);
+            safe(function startCurrency() { setCurrency('USD'); });
+            safe(function startPayment() { renderSplitRows(); updatePaymentUI(); });
+            safe(initLogo);
+            safe(function detect() { Geo.detect(applyRegion); });
+        }
+
+        window.addEventListener('pageshow', function (e) { if (e.persisted) closeAllAccordions(); });
+
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+        else init();
+    })();
+    </script>
+    <script>
+    /* ===== Quick Receipt tab (self-contained so it cannot clash with the bill maker) ===== */
+    (function () {
+        'use strict';
+
+        var $ = function (id) { return document.getElementById(id); };
+        var selectedPaymentMode = 'Cash';
+        var MODE_ON = 'mode-btn px-4 py-2 rounded-lg border border-indigo-600 bg-indigo-50 text-indigo-700 font-medium text-sm transition';
+        var MODE_OFF = 'mode-btn px-4 py-2 rounded-lg border border-slate-300 bg-white text-slate-700 font-medium text-sm transition hover:border-slate-400';
+
+        function setPaymentMode(mode) {
+            selectedPaymentMode = mode;
+            var btns = document.querySelectorAll('#paymentModeGroup .mode-btn');
+            for (var i = 0; i < btns.length; i++) {
+                var on = btns[i].getAttribute('data-mode') === mode;
+                btns[i].className = on ? MODE_ON : MODE_OFF;
+                btns[i].setAttribute('aria-pressed', on ? 'true' : 'false');
+            }
+        }
+
+        function formatAmount(currency, rawAmount) {
+            var locale = currency === '₹' ? 'en-IN' : 'en-US';
+            var value = Number(rawAmount) || 0;
+            return currency + ' ' + value.toLocaleString(locale, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+
+        function getSafeReceiptNo() {
+            return ($('receiptNo').value || 'receipt').replace(/[^\w\-]+/g, '') || 'receipt';
+        }
+
+        function updatePreviewValues() {
+            var issuer = $('issuedBy').value || 'YOUR SHOP NAME';
+            var customer = $('customerName').value || 'Walk-in Customer';
+            var no = $('receiptNo').value || '#101';
+            var date = $('receiptDate').value || new Date().toISOString().slice(0, 10);
+            var amount = $('amount').value || '0';
+            var currency = $('currencySymbol').value;
+            var description = $('description').value || '1. General Payment';
+            var formattedAmount = formatAmount(currency, amount);
+
+            $('previewIssuer').textContent = issuer;
+            $('previewCustomer').textContent = customer;
+            $('previewNo').textContent = no;
+            $('previewDate').textContent = date;
+            $('previewMode').textContent = selectedPaymentMode;
+            $('previewDesc').textContent = description;
+            $('previewAmount').textContent = formattedAmount;
+
+            $('pdfIssuer').textContent = issuer;
+            $('pdfCustomer').textContent = customer;
+            $('pdfNo').textContent = no;
+            $('pdfDate').textContent = date;
+            $('pdfMode').textContent = selectedPaymentMode;
+            $('pdfDesc').textContent = description;
+            $('pdfAmount').textContent = formattedAmount;
+        }
+
+        function openPreview() {
+            updatePreviewValues();
+            var modal = $('receiptModal');
+            modal.classList.remove('hidden');
+            modal.style.display = 'flex';
+        }
+
+        function closePreview() {
+            var modal = $('receiptModal');
+            if (!modal || modal.style.display === 'none') return;
+            modal.classList.add('hidden');
+            modal.style.display = 'none';
+        }
+
+        function generateReceiptBlob() {
+            updatePreviewValues();
+            var element = $('pdfExportTemplate');
+            var fonts = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+            return fonts.then(function () {
+                if (typeof html2canvas !== 'function') throw new Error('html2canvas not loaded');
+                return html2canvas(element, {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    backgroundColor: '#ffffff'
+                });
+            }).then(function (canvas) {
+                return new Promise(function (resolve) { canvas.toBlob(resolve, 'image/png'); });
+            });
+        }
+
+        function triggerBlobDownload(blob, fileName) {
+            var url = URL.createObjectURL(blob);
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+        }
+
+        function downloadPDF() {
+            updatePreviewValues();
+            if (typeof html2pdf !== 'function') {
+                alert('PDF library could not load. Check your internet connection and reload.');
+                return;
+            }
+            var element = $('pdfExportTemplate');
+            var receiptNo = getSafeReceiptNo();
+            var fonts = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+            fonts.then(function () {
+                var opt = {
+                    margin: 10,
+                    filename: 'Receipt_' + receiptNo + '.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: {
+                        scale: 2,
+                        useCORS: true,
+                        logging: false,
+                        backgroundColor: '#ffffff',
+                        scrollX: 0,
+                        scrollY: 0
+                    },
+                    jsPDF: { unit: 'mm', format: 'a5', orientation: 'portrait' }
+                };
+                html2pdf().set(opt).from(element).save();
+            });
+        }
+
+        function downloadPNG() {
+            generateReceiptBlob().then(function (blob) {
+                if (!blob) {
+                    alert('Could not create the receipt image. Please try again.');
+                    return;
+                }
+                triggerBlobDownload(blob, 'Receipt_' + getSafeReceiptNo() + '.png');
+            }).catch(function (err) {
+                console.error(err);
+                alert('Could not create the receipt image. Please reload and try again.');
+            });
+        }
+
+        function shareWhatsApp() {
+            var fileName = 'Receipt_' + getSafeReceiptNo() + '.png';
+            var message = 'Hi!! Here is your Receipt. Thanks.';
+
+            generateReceiptBlob().then(function (blob) {
+                if (!blob) {
+                    alert('Could not create the receipt image. Please try again.');
+                    return;
+                }
+                var file = new File([blob], fileName, { type: 'image/png' });
+
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    navigator.share({
+                        files: [file],
+                        title: 'Receipt',
+                        text: message
+                    }).catch(function (err) {
+                        if (err && err.name === 'AbortError') return;
+                        console.warn('Share failed, using fallback:', err);
+                        fallback();
+                    });
+                    return;
+                }
+                fallback();
+
+                function fallback() {
+                    triggerBlobDownload(blob, fileName);
+                    alert('Your browser cannot attach files directly. The receipt image was downloaded. Attach it manually in WhatsApp.');
+                    setTimeout(function () {
+                        window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(message), '_blank');
+                    }, 500);
+                }
+            }).catch(function (err) {
+                console.error(err);
+                alert('Could not create the receipt image. Please reload and try again.');
+            });
+        }
+
+        function init() {
+            var dateField = $('receiptDate');
+            if (dateField) dateField.valueAsDate = new Date();
+
+            var descField = $('description');
+            if (descField) {
+                if (!descField.value) descField.value = '1. ';
+                descField.addEventListener('keydown', function (e) {
+                    if (e.key !== 'Enter') return;
+                    e.preventDefault();
+                    var pos = this.selectionStart;
+                    var before = this.value.slice(0, pos);
+                    var after = this.value.slice(this.selectionEnd);
+                    var nextNum = before.split('\n').length + 1;
+                    var insert = '\n' + nextNum + '. ';
+                    this.value = before + insert + after;
+                    var newPos = pos + insert.length;
+                    this.setSelectionRange(newPos, newPos);
+                });
+            }
+
+            var savedIssuer = '';
+            try { savedIssuer = localStorage.getItem('quickreceipt_issuer') || ''; } catch (e) {}
+            if (savedIssuer && $('issuedBy')) $('issuedBy').value = savedIssuer;
+
+            var timezone = '';
+            try { timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+            var currencySelect = $('currencySymbol');
+            if (currencySelect) {
+                if (/Calcutta|Kolkata/.test(timezone)) currencySelect.value = '₹';
+                else if (/London/.test(timezone)) currencySelect.value = '£';
+                else if (/Europe/.test(timezone)) currencySelect.value = '€';
+                else currencySelect.value = '$';
+            }
+
+            $('issuedBy').addEventListener('input', function (e) {
+                try { localStorage.setItem('quickreceipt_issuer', e.target.value); } catch (err) {}
+            });
+
+            var modeBtns = document.querySelectorAll('#paymentModeGroup .mode-btn');
+            for (var i = 0; i < modeBtns.length; i++) {
+                (function (btn) {
+                    btn.addEventListener('click', function () { setPaymentMode(btn.getAttribute('data-mode')); });
+                })(modeBtns[i]);
+            }
+
+            $('receiptPreviewBtn').addEventListener('click', openPreview);
+            $('receiptPdfBtn').addEventListener('click', downloadPDF);
+            $('receiptPngBtn').addEventListener('click', downloadPNG);
+            $('receiptWaBtn').addEventListener('click', shareWhatsApp);
+            $('receiptCloseX').addEventListener('click', closePreview);
+            $('receiptModalClose').addEventListener('click', closePreview);
+            $('receiptModalPdf').addEventListener('click', function () { closePreview(); downloadPDF(); });
+            $('receiptModalPng').addEventListener('click', function () { closePreview(); downloadPNG(); });
+            $('receiptModalWa').addEventListener('click', function () { closePreview(); shareWhatsApp(); });
+            $('receiptModal').addEventListener('click', function (e) { if (e.target === this) closePreview(); });
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePreview(); });
+        }
+
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+        else init();
+    })();
+    </script>
+
+    <script>
+    /* ===== Bill / Quick Receipt tab switcher (ARIA tabs, deep links, keyboard) ===== */
+    (function () {
+        'use strict';
+
+        var tablist = document.querySelector('[role="tablist"]');
+        if (!tablist) return;
+        var tabs = Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
+        var NAMES = ['bill', 'receipt'];
+        var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+        function panelOf(name) { return document.getElementById('panel-' + name); }
+        function tabOf(name) { return document.getElementById('tab-' + name); }
+
+        function normalize(name) {
+            name = String(name || '').toLowerCase();
+            return NAMES.indexOf(name) >= 0 ? name : 'bill';
+        }
+
+        function activate(name, opts) {
+            opts = opts || {};
+            name = normalize(name);
+            for (var i = 0; i < tabs.length; i++) {
+                var t = tabs[i];
+                var on = t.getAttribute('data-tab') === name;
+                t.setAttribute('aria-selected', on ? 'true' : 'false');
+                t.tabIndex = on ? 0 : -1;
+                var p = panelOf(t.getAttribute('data-tab'));
+                if (p) p.hidden = !on;
+            }
+            if (opts.focus) {
+                var current = tabOf(name);
+                if (current) current.focus();
+            }
+            if (opts.hash) {
+                try { history.replaceState(null, '', '#' + name); } catch (e) {}
+            }
+            if (opts.scroll) {
+                var active = panelOf(name);
+                if (active && active.scrollIntoView) {
+                    active.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+                }
+            }
+        }
+
+        function hashTab() {
+            var h = (window.location.hash || '').replace('#', '').toLowerCase();
+            if (h === 'receipt' || h === 'receipt-maker' || h === 'quick-receipt') return 'receipt';
+            if (h === 'bill' || h === 'bill-maker' || h === 'invoice') return 'bill';
+            return null;
+        }
+
+        for (var i = 0; i < tabs.length; i++) {
+            (function (t) {
+                t.addEventListener('click', function () {
+                    activate(t.getAttribute('data-tab'), { hash: true, scroll: true });
+                });
+                t.addEventListener('keydown', function (e) {
+                    var idx = tabs.indexOf(t);
+                    var next = null;
+                    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (idx + 1) % tabs.length;
+                    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (idx - 1 + tabs.length) % tabs.length;
+                    else if (e.key === 'Home') next = 0;
+                    else if (e.key === 'End') next = tabs.length - 1;
+                    if (next === null) return;
+                    e.preventDefault();
+                    activate(tabs[next].getAttribute('data-tab'), { focus: true, hash: true });
+                });
+            })(tabs[i]);
+        }
+
+        document.addEventListener('click', function (e) {
+            var trigger = e.target.closest ? e.target.closest('[data-open-tab]') : null;
+            if (!trigger) return;
+            e.preventDefault();
+            activate(trigger.getAttribute('data-open-tab'), { hash: true, scroll: true });
+        });
+
+        window.addEventListener('hashchange', function () {
+            var name = hashTab();
+            if (name) activate(name);
+        });
+
+        activate(hashTab() || 'bill');
+    })();
+    </script>
+</body>
+</html>

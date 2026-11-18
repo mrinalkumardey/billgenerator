@@ -1,0 +1,10 @@
+# Local backups of the pre-merge pages (not part of the deployed site)
+_backup/
+
+# Node modules from local tooling
+node_modules/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini

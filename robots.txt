@@ -1,0 +1,10 @@
+# QuickBill – Receipt Maker and Bill Maker
+# Production site: https://billmaker.pixara.in
+
+User-agent: *
+Allow: /
+
+# Optional: keep the redirect stub out of the index (it also sends noindex + canonical)
+Disallow: /bill.html
+
+Sitemap: https://billmaker.pixara.in/sitemap.xml
